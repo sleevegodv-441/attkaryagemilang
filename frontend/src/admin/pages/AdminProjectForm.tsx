@@ -88,10 +88,10 @@ export default function AdminProjectForm() {
             </div>
 
             {/* Split Pane: Form | Preview */}
-            <div className="flex-1 flex overflow-hidden">
-                {/* Left: Form */}
-                <div className="w-1/2 overflow-y-auto bg-gray-50/50 border-r border-gray-100">
-                    <form onSubmit={handleSubmit} className="p-6 space-y-5">
+            <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+                {/* Form Section */}
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100 p-8">
+                    <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Project Title */}
                         <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5 space-y-4">
                             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
@@ -231,8 +231,8 @@ export default function AdminProjectForm() {
                     </form>
                 </div>
 
-                {/* Right: Live Card Preview */}
-                <div className="w-1/2 bg-gray-100 flex flex-col">
+                {/* Live Preview Section */}
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-white flex flex-col relative">
                     <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center gap-2 flex-shrink-0">
                         <span className="material-symbols-outlined text-gray-400 text-sm">visibility</span>
                         <span className="text-xs font-medium text-gray-500">Live Preview</span>

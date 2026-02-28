@@ -58,9 +58,9 @@ export default function AdminBlogForm() {
                 </div>
             </div>
 
-            <div className="flex-1 flex overflow-hidden">
+            <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Form */}
-                <div className="w-1/2 overflow-y-auto bg-gray-50/50 border-r border-gray-100">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100">
                     <form onSubmit={handleSubmit} className="p-6 space-y-5">
                         <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
                             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">article</span> Article Info</h3>
@@ -110,7 +110,7 @@ export default function AdminBlogForm() {
                 </div>
 
                 {/* Right: Live Card Preview */}
-                <div className="w-1/2 bg-gray-100 flex flex-col">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
                     <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center gap-2 flex-shrink-0">
                         <span className="material-symbols-outlined text-gray-400 text-sm">visibility</span>
                         <span className="text-xs font-medium text-gray-500">Live Preview</span>

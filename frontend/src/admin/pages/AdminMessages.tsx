@@ -72,9 +72,9 @@ export default function AdminMessages() {
             </div>
 
             {/* Split layout */}
-            <div className="flex-1 flex overflow-hidden">
+            <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                 {/* Message List */}
-                <div className="w-1/3 border-r border-gray-100 bg-white overflow-y-auto flex flex-col">
+                <div className="w-full lg:w-1/3 h-1/2 lg:h-full border-b lg:border-b-0 lg:border-r border-gray-100 bg-white overflow-y-auto flex flex-col">
                     {loading ? (
                         <div className="p-6 flex justify-center"><span className="material-symbols-outlined animate-spin text-gray-400">progress_activity</span></div>
                     ) : messages.length === 0 ? (
@@ -114,7 +114,7 @@ export default function AdminMessages() {
                 </div>
 
                 {/* Message Detail View */}
-                <div className="w-2/3 bg-gray-50/50 flex flex-col h-full overflow-hidden">
+                <div className="w-full lg:w-2/3 h-1/2 lg:h-full bg-gray-50/50 flex flex-col overflow-hidden">
                     {selectedMessage ? (
                         <div className="flex-1 flex flex-col mx-auto w-full max-w-3xl p-8">
                             <div className="bg-white border border-gray-100 rounded-2xl shadow-sm overflow-hidden flex flex-col flex-1">

@@ -23,8 +23,8 @@ export default function AdminBlog() {
                 </Link>
             </div>
 
-            <div className="flex-1 flex overflow-hidden">
-                <div className="w-1/2 overflow-y-auto bg-gray-50/50 border-r border-gray-100">
+            <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100">
                     {loading ? (
                         <div className="p-12 text-center"><span className="material-symbols-outlined animate-spin text-gray-300">progress_activity</span></div>
                     ) : posts.length === 0 ? (
@@ -56,7 +56,7 @@ export default function AdminBlog() {
                     )}
                 </div>
 
-                <div className="w-1/2 bg-gray-100 flex flex-col">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
                     <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center justify-between flex-shrink-0">
                         <div className="flex items-center gap-2"><span className="material-symbols-outlined text-gray-400 text-sm">desktop_windows</span><span className="text-xs font-medium text-gray-500">Live Preview — Blog Page</span></div>
                         <button onClick={() => setPreviewKey(k => k + 1)} className="text-xs text-gray-500 hover:text-gray-700 flex items-center gap-1"><span className="material-symbols-outlined text-sm">refresh</span> Refresh</button>
