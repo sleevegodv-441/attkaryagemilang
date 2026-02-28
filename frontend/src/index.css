@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #1152d4;
+    --color-secondary: #333333;
+    --color-accent: #f5f5f5;
+    --color-background-light: #ffffff;
+    --color-background-dark: #101622;
+
+    --font-display: "Newsreader", serif;
+    --font-sans: "Noto Sans", sans-serif;
+    --font-inter: "Inter", sans-serif;
+    --font-manrope: "Manrope", sans-serif;
+
+    --radius-none: 0px;
+}
+
+@utility form-input {
+    border: 1px solid var(--color-slate-300);
+    background-color: white;
+    color: var(--color-slate-900);
+    outline: none;
+
+    &::placeholder {
+        color: var(--color-slate-400);
+    }
+
+    &:focus {
+        border-color: black;
+    }
+}
+
+@utility form-select {
+    border: 1px solid var(--color-slate-300);
+    background-color: white;
+    color: var(--color-slate-900);
+    outline: none;
+
+    &:focus {
+        border-color: black;
+    }
+}
+
+@utility form-textarea {
+    border: 1px solid var(--color-slate-300);
+    background-color: white;
+    color: var(--color-slate-900);
+    outline: none;
+
+    &::placeholder {
+        color: var(--color-slate-400);
+    }
+
+    &:focus {
+        border-color: black;
+    }
+}
+
+html,
+body {
+    @apply scroll-smooth;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #d4d4d4;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
