@@ -54,7 +54,9 @@ export default function Footer() {
                 </div>
                 <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-[Noto_Sans]">
                     <p>© 2024 PT. ATT Karya Gemilang. All rights reserved.</p>
-                    <div className="flex gap-6">
+                    <div className="flex gap-6 items-center">
+                        <Link to="/admin/login" className="hover:text-black transition-colors font-medium">Staff Login</Link>
+                        <span className="w-1 h-1 rounded-full bg-gray-200"></span>
                         <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
                         <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
                     </div>
