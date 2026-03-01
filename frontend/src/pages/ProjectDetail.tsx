@@ -156,7 +156,7 @@ export default function ProjectDetail() {
                         exit={{ opacity: 0 }}
                         onClick={() => setLightboxSrc(null)}
                     >
-                        <button onClick={() => setLightboxSrc(null)} className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-10 bg-black/40 rounded-full p-2">
+                        <button onClick={() => setLightboxSrc(null)} className="absolute top-6 right-6 text-white/80 hover:text-white transition-colors z-10 bg-black/40 rounded-full p-2">
                             <span className="material-symbols-outlined text-2xl block">close</span>
                         </button>
                         <motion.img

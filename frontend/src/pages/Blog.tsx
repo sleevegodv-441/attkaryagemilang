@@ -109,7 +109,7 @@ export default function Blog() {
                             ))
                         ) : paginatedArticles.length === 0 ? (
                             <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-16 bg-accent/50 rounded-2xl border border-[#e6dfcc] border-dashed">
-                                <span className="material-symbols-outlined text-4xl text-slate-300 mb-3 block">search_off</span>
+                                <span className="material-symbols-outlined text-4xl text-slate-500 mb-3 block">search_off</span>
                                 <h3 className="text-lg font-bold text-slate-700 font-[Newsreader] mb-1">Tidak ada artikel ditemukan</h3>
                                 <p className="text-slate-500 font-[Noto_Sans] text-sm">Coba gunakan kata kunci pencarian yang lain.</p>
                                 {searchTerm && (

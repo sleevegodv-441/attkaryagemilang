@@ -58,17 +58,17 @@ export default function Home() {
                     </h1>
                     <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-slate-600 text-sm md:text-base font-[Noto_Sans] font-light tracking-wide border-t border-b border-[#e6dfcc] py-4 w-full md:w-auto">
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-slate-800 text-sm">verified</span> {t('home.hero.exp')}</span>
-                        <span className="hidden md:inline text-slate-300">|</span>
+                        <span className="hidden md:inline text-slate-500">|</span>
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-slate-800 text-sm">verified</span> {t('home.hero.warranty')}</span>
-                        <span className="hidden md:inline text-slate-300">|</span>
+                        <span className="hidden md:inline text-slate-500">|</span>
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-slate-800 text-sm">verified</span> {t('home.hero.transparent')}</span>
                     </div>
                     <div className="flex flex-col sm:flex-row gap-5 mt-4 w-full sm:w-auto">
-                        <Link to="/contact" className="h-14 px-10 bg-black hover:bg-slate-800 text-white font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center gap-2 group">
+                        <Link to="/contact" className="h-12 px-6 sm:h-14 sm:px-10 bg-black hover:bg-slate-800 text-white font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center gap-2 group">
                             {t('home.hero.cta1')}
                             <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </Link>
-                        <Link to="/services" className="h-14 px-10 border border-black hover:bg-accent text-slate-900 font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center bg-transparent">
+                        <Link to="/services" className="h-12 px-6 sm:h-14 sm:px-10 border border-black hover:bg-accent text-slate-900 font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center bg-transparent">
                             {t('home.hero.cta2')}
                         </Link>
                     </div>
@@ -223,7 +223,7 @@ export default function Home() {
                         </div>
                     ) : homeProjects.length === 0 ? (
                         <div className="text-center py-16 border-2 border-dashed border-[#d6cfbc]">
-                            <span className="material-symbols-outlined text-5xl text-slate-300">apartment</span>
+                            <span className="material-symbols-outlined text-5xl text-slate-500">apartment</span>
                             <p className="text-slate-400 mt-4 font-[Noto_Sans]">Belum ada proyek</p>
                         </div>
                     ) : (
@@ -285,7 +285,7 @@ export default function Home() {
                             ))
                         ) : testimonials.length === 0 ? (
                             <div className="col-span-3 text-center py-12 border-2 border-dashed border-[#d6cfbc]">
-                                <span className="material-symbols-outlined text-4xl text-slate-300">chat</span>
+                                <span className="material-symbols-outlined text-4xl text-slate-500">chat</span>
                                 <p className="text-slate-400 mt-2 font-[Noto_Sans]">Belum ada testimoni</p>
                             </div>
                         ) : (
@@ -320,10 +320,10 @@ export default function Home() {
                         <h2 className="text-3xl md:text-5xl font-[Newsreader] font-medium text-slate-900 mb-6">{t('home.cta.title')}</h2>
                         <p className="text-slate-500 text-lg mb-10 max-w-xl mx-auto font-[Noto_Sans] font-light">{t('home.cta.desc')}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link to="/contact" className="bg-black text-white hover:bg-slate-800 px-10 py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
+                            <Link to="/contact" className="bg-black text-white hover:bg-slate-800 px-6 py-3 sm:px-10 sm:py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
                                 {t('home.cta.btn1')}
                             </Link>
-                            <Link to="/contact" className="bg-transparent border border-black text-black hover:bg-accent px-10 py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
+                            <Link to="/contact" className="bg-transparent border border-black text-black hover:bg-accent px-6 py-3 sm:px-10 sm:py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
                                 {t('home.cta.btn2')}
                             </Link>
                         </div>

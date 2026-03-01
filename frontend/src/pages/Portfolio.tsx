@@ -128,7 +128,7 @@ export default function Portfolio() {
                         ))
                     ) : filteredProjects.length === 0 ? (
                         <div className="col-span-3 text-center py-12">
-                            <span className="material-symbols-outlined text-4xl text-slate-300">search_off</span>
+                            <span className="material-symbols-outlined text-4xl text-slate-500">search_off</span>
                             <p className="text-slate-500 mt-2">Belum ada proyek</p>
                         </div>
                     ) : (

@@ -121,8 +121,8 @@ export default function Services() {
                                 <span>{t('services.btn')}</span>
                             </Link>
                         </FadeIn>
-                        <FadeIn delay={0.2} className="group flex flex-col h-full relative">
-                            <div className="absolute -top-3 -right-3 bg-black text-white text-[10px] font-bold px-3 py-1 uppercase tracking-wider z-10">{t('services.s2_badge')}</div>
+                        <FadeIn delay={0.2} className="group flex flex-col h-full relative border border-neutral-100 p-8 rounded-2xl hover:border-black transition-colors">
+                            <div className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-3 py-1.5 uppercase tracking-wider z-10 rounded-bl-lg rounded-tr-2xl">{t('services.s2_badge')}</div>
                             <div className="flex items-start justify-between mb-8 border-b border-neutral-100 pb-6">
                                 <span className="material-symbols-outlined text-5xl font-thin text-black group-hover:scale-110 transition-transform duration-500">foundation</span>
                                 <div className="text-right">
@@ -235,10 +235,10 @@ export default function Services() {
                     <h2 className="text-3xl md:text-4xl font-light text-black mb-6">{t('services.cta_title')}</h2>
                     <p className="text-neutral-500 mb-10 text-lg font-light">{t('services.cta_desc')}</p>
                     <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                        <Link to="/contact" className="bg-black hover:bg-neutral-800 text-white px-10 py-4 rounded-none text-xs uppercase tracking-widest font-bold transition-all">
+                        <Link to="/contact" className="bg-black hover:bg-neutral-800 text-white px-6 py-3 sm:px-10 sm:py-4 rounded-none text-xs uppercase tracking-widest font-bold transition-all">
                             {t('services.cta_btn1')}
                         </Link>
-                        <Link to="/portfolio" className="bg-transparent hover:bg-white text-black border border-black px-10 py-4 rounded-none text-xs uppercase tracking-widest font-bold transition-all">
+                        <Link to="/portfolio" className="bg-transparent hover:bg-white text-black border border-black px-6 py-3 sm:px-10 sm:py-4 rounded-none text-xs uppercase tracking-widest font-bold transition-all">
                             {t('services.cta_btn2')}
                         </Link>
                     </div>

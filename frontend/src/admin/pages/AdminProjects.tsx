@@ -27,10 +27,10 @@ export default function AdminProjects() {
             <div className="bg-white border-b border-[#e6dfcc] px-6 py-4 flex items-center justify-between flex-shrink-0">
                 <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-gray-400">apartment</span>
-                    <div><h1 className="text-lg font-bold text-gray-900">Manage Projects</h1><p className="text-xs text-gray-400">Kelola portofolio proyek</p></div>
+                    <div><h1 className="text-lg font-bold text-gray-900">Manage Projects</h1><p className="text-xs text-gray-400 hidden sm:block">Kelola portofolio proyek</p></div>
                 </div>
-                <Link to="/admin/projects/new" className="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors flex items-center gap-2">
-                    <span className="material-symbols-outlined text-sm">add</span> Tambah Project
+                <Link to="/admin/projects/new" className="bg-primary text-white px-3 sm:px-5 py-2 rounded-lg text-sm font-medium hover:bg-primary-hover transition-colors flex items-center gap-1 sm:gap-2">
+                    <span className="material-symbols-outlined text-sm">add</span> <span className="hidden sm:inline">Tambah Project</span> <span className="sm:hidden">Tambah</span>
                 </Link>
             </div>
 
@@ -48,17 +48,19 @@ export default function AdminProjects() {
                     ) : (
                         <div className="p-4 space-y-2">
                             {projects.map(p => (
-                                <div key={p.id} className="bg-white rounded-xl p-4 flex items-center gap-4 hover:shadow-md transition-shadow">
-                                    {p.image_url ? <img src={p.image_url} alt={p.title} className="w-16 h-12 object-cover rounded-lg flex-shrink-0" /> : <div className="w-16 h-12 bg-gray-100 rounded-lg flex-shrink-0 flex items-center justify-center"><span className="material-symbols-outlined text-gray-300">image</span></div>}
-                                    <div className="flex-1 min-w-0">
-                                        <h3 className="font-medium text-gray-900 text-sm truncate">{p.title}</h3>
-                                        <div className="flex gap-2 mt-1">
-                                            <span className="bg-accent text-primary text-[10px] px-2 py-0.5 rounded-full font-medium">{p.category?.replace('_', ' ')}</span>
-                                            {p.location && <span className="text-[10px] text-gray-400">{p.location}</span>}
-                                            {p.is_featured && <span className="bg-green-50 text-green-600 text-[10px] px-2 py-0.5 rounded-full font-medium">Featured</span>}
+                                <div key={p.id} className="bg-white rounded-xl p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 hover:shadow-md transition-shadow">
+                                    <div className="flex items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                                        {p.image_url ? <img src={p.image_url} alt={p.title} className="w-16 h-12 object-cover rounded-lg flex-shrink-0" /> : <div className="w-16 h-12 bg-gray-100 rounded-lg flex-shrink-0 flex items-center justify-center"><span className="material-symbols-outlined text-gray-300">image</span></div>}
+                                        <div className="flex-1 min-w-0">
+                                            <h3 className="font-medium text-gray-900 text-sm truncate">{p.title}</h3>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                <span className="bg-accent text-primary text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">{p.category?.replace('_', ' ')}</span>
+                                                {p.location && <span className="text-[10px] text-gray-400 truncate max-w-[120px] sm:max-w-[200px]">{p.location}</span>}
+                                                {p.is_featured && <span className="bg-green-50 text-green-600 text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Featured</span>}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="flex gap-1 flex-shrink-0">
+                                    <div className="flex gap-1 sm:ml-auto w-full sm:w-auto justify-end border-t sm:border-t-0 border-gray-100 pt-2 sm:pt-0">
                                         <Link to={`/admin/projects/${p.id}`} className="text-gray-400 hover:text-primary p-1.5 rounded-lg hover:bg-accent transition-colors"><span className="material-symbols-outlined text-lg">edit</span></Link>
                                         <button onClick={() => deleteProject(p.id)} className="text-gray-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-red-50 transition-colors"><span className="material-symbols-outlined text-lg">delete</span></button>
                                     </div>

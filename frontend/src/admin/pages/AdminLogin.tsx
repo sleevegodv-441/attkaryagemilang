@@ -40,7 +40,7 @@ export default function AdminLogin() {
                         <span className="text-2xl font-bold tracking-widest uppercase origin-left drop-shadow-lg">ATT Karya</span>
                     </div>
                     <h2 className="text-4xl font-light leading-tight mb-4 drop-shadow-md">Membangun <br /><span className="font-bold">Masa Depan.</span></h2>
-                    <p className="text-slate-300 max-w-md font-light leading-relaxed drop-shadow">Selamat datang di portal manajemen konten. Silakan masuk untuk mengelola portofolio, layanan, dan artikel perusahaan.</p>
+                    <p className="text-slate-500 max-w-md font-light leading-relaxed drop-shadow">Selamat datang di portal manajemen konten. Silakan masuk untuk mengelola portofolio, layanan, dan artikel perusahaan.</p>
                 </div>
             </div>
 

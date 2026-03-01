@@ -21,6 +21,8 @@ export default function AdminLayout() {
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
 
+    const [isMobileOpen, setIsMobileOpen] = useState(false);
+
     useEffect(() => {
         const fetchUnread = async () => {
             const { count } = await supabase.from('messages').select('*', { count: 'exact', head: true }).eq('is_read', false);
@@ -42,10 +44,31 @@ export default function AdminLayout() {
 
     return (
         <div className="min-h-screen flex bg-accent/50 font-[Inter,system-ui,sans-serif]">
-            {/* Sidebar — light, clean, blue accent */}
-            <aside className="w-60 bg-white border-r border-[#d6cfbc] flex flex-col fixed h-full z-30">
-                <div className="px-5 py-5 border-b border-[#e6dfcc]">
-                    <Link to="/admin" className="flex items-center gap-3">
+            {/* Mobile Header Menu Bar */}
+            <div className="md:hidden fixed top-0 w-full h-16 bg-white border-b border-[#e6dfcc] z-40 flex items-center justify-between px-4">
+                <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                        <span className="material-symbols-outlined text-white text-base">apartment</span>
+                    </div>
+                    <h1 className="text-sm font-bold text-gray-900">ATT CMS</h1>
+                </div>
+                <button onClick={() => setIsMobileOpen(true)} className="p-2 text-gray-600 hover:bg-accent rounded-lg">
+                    <span className="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+
+            {/* Backdrop for Mobile Sidebar */}
+            {isMobileOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                    onClick={() => setIsMobileOpen(false)}
+                />
+            )}
+
+            {/* Sidebar — light, clean, green accent */}
+            <aside className={`w-64 md:w-60 bg-white border-r border-[#d6cfbc] flex flex-col fixed top-0 bottom-0 z-50 md:z-30 transition-transform duration-300 md:translate-x-0 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className="px-5 py-5 border-b border-[#e6dfcc] flex items-center justify-between">
+                    <Link to="/admin" onClick={() => setIsMobileOpen(false)} className="flex items-center gap-3">
                         <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                             <span className="material-symbols-outlined text-white text-base">apartment</span>
                         </div>
@@ -62,6 +85,7 @@ export default function AdminLayout() {
                         <Link
                             key={item.to}
                             to={item.to}
+                            onClick={() => setIsMobileOpen(false)}
                             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all mb-0.5 justify-between ${isActive(item.to, item.exact)
                                 ? 'bg-accent text-secondary'
                                 : 'text-gray-500 hover:text-gray-900 hover:bg-accent'
@@ -96,11 +120,11 @@ export default function AdminLayout() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-1 ml-60">
-                <div className="p-8">
+            <main className="flex-1 md:ml-60 pt-16 md:pt-0">
+                <div className="p-4 md:p-8">
                     <Outlet />
                 </div>
             </main>
-        </div>
+        </div >
     );
 }
