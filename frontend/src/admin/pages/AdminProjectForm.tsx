@@ -138,7 +138,7 @@ export default function AdminProjectForm() {
                             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary text-base">image</span> Cover Image
                             </h3>
-                            {form.image_url && <img src={form.image_url} alt="" className="w-full h-44 object-cover rounded-lg" />}
+                            {form.image_url ? <img src={form.image_url} alt="Cover" className="w-full h-44 object-cover rounded-lg bg-gray-100" /> : <div className="w-full h-44 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">No Image</div>}
                             <div className="flex gap-2">
                                 <input value={form.image_url} onChange={e => set('image_url', e.target.value)} placeholder="Paste image URL" className="flex-1 px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
                                 <label className="flex items-center gap-1 bg-gray-100 px-4 py-2.5 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-200 cursor-pointer transition-colors">
@@ -157,12 +157,12 @@ export default function AdminProjectForm() {
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
                                         <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Before Image</label>
-                                        {form.before_image && <img src={form.before_image} alt="" className="w-full h-24 object-cover rounded mb-2 border border-[#d6cfbc]" />}
+                                        {form.before_image ? <img src={form.before_image} alt="Before" className="w-full h-24 object-cover rounded mb-2 border border-[#d6cfbc] bg-gray-100" /> : <div className="w-full h-24 bg-gray-100 rounded mb-2 border border-[#d6cfbc] flex items-center justify-center text-gray-400 text-xs">No Image</div>}
                                         <input value={form.before_image} onChange={e => set('before_image', e.target.value)} placeholder="Image URL" className="w-full px-3 py-2 border border-[#d6cfbc] rounded text-xs focus:outline-none focus:ring-2 focus:ring-primary" />
                                     </div>
                                     <div>
                                         <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">After Image</label>
-                                        {form.after_image && <img src={form.after_image} alt="" className="w-full h-24 object-cover rounded mb-2 border border-[#d6cfbc]" />}
+                                        {form.after_image ? <img src={form.after_image} alt="After" className="w-full h-24 object-cover rounded mb-2 border border-[#d6cfbc] bg-gray-100" /> : <div className="w-full h-24 bg-gray-100 rounded mb-2 border border-[#d6cfbc] flex items-center justify-center text-gray-400 text-xs">No Image</div>}
                                         <input value={form.after_image} onChange={e => set('after_image', e.target.value)} placeholder="Image URL" className="w-full px-3 py-2 border border-[#d6cfbc] rounded text-xs focus:outline-none focus:ring-2 focus:ring-primary" />
                                     </div>
                                 </div>

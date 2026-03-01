@@ -89,7 +89,7 @@ export default function AdminBlogForm() {
 
                         <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
                             <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">image</span> Cover Image</h3>
-                            {form.image_url && <img src={form.image_url} alt="" className="w-full h-44 object-cover rounded-lg" />}
+                            {form.image_url ? <img src={form.image_url} alt="Cover" className="w-full h-44 object-cover rounded-lg bg-gray-100" /> : <div className="w-full h-44 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400">No Image</div>}
                             <div className="flex gap-2">
                                 <input value={form.image_url} onChange={e => set('image_url', e.target.value)} placeholder="Paste image URL" className="flex-1 px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                                 <label className="flex items-center gap-1 bg-gray-100 px-4 py-2.5 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-200 cursor-pointer transition-colors">
