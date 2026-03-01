@@ -86,3 +86,14 @@ export interface SiteSetting {
     value: string;
     type: string;
 }
+
+// Shared category labels for projects
+export const projectCategories = ['bangun_baru', 'renovasi', 'interior', 'commercial', 'desain'];
+export const categoryLabels: Record<string, string> = {
+    bangun_baru: 'Project Build',
+    renovasi: 'Build Renovation',
+    interior: 'Interior',
+    commercial: 'Commercial',
+    desain: 'Project Desain',
+};
+export const getCategoryLabel = (key: string) => categoryLabels[key] || key.replace('_', ' ');

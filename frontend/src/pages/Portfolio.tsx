@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import FadeIn from '../components/FadeIn';
 import { useProjects } from '../lib/hooks';
+import { getCategoryLabel } from '../lib/supabaseClient';
 
 export default function Portfolio() {
     const { t } = useTranslation();
@@ -13,7 +14,7 @@ export default function Portfolio() {
     const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
     const [activeFilter, setActiveFilter] = useState('all');
 
-    const filteredProjects = activeFilter === 'all' ? projects : projects.filter(p => p.category === activeFilter);
+    const filteredProjects = activeFilter === 'all' ? projects : projects.filter(p => p.category.includes(activeFilter));
     const featuredProject = projects.find(p => p.is_featured);
 
     useEffect(() => {
@@ -39,9 +40,11 @@ export default function Portfolio() {
             <div className="flex flex-wrap gap-3 mb-12 border-b border-[#d6cfbc] pb-6">
                 {[
                     { key: 'all', label: t('portfolio.filter_all') },
-                    { key: 'bangun_baru', label: t('portfolio.filter_new') },
-                    { key: 'renovasi', label: t('portfolio.filter_reno') },
-                    { key: 'interior', label: t('portfolio.filter_int') },
+                    { key: 'bangun_baru', label: 'Project Build' },
+                    { key: 'renovasi', label: 'Build Renovation' },
+                    { key: 'interior', label: 'Interior' },
+                    { key: 'commercial', label: 'Commercial' },
+                    { key: 'desain', label: 'Project Desain' },
                 ].map(f => (
                     <button key={f.key} onClick={() => setActiveFilter(f.key)} className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${activeFilter === f.key ? 'bg-primary text-white shadow-sm' : 'bg-white border border-[#d6cfbc] text-slate-600 hover:bg-accent'}`}>
                         {f.label}
@@ -142,7 +145,11 @@ export default function Portfolio() {
                                             src={p.image_url}
                                             loading="lazy"
                                         />
-                                        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-800 capitalize">{p.category.replace('_', ' ')}</div>
+                                        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                                            {p.category.split(',').map(c => c.trim()).filter(Boolean).slice(0, 2).map((cat, i) => (
+                                                <span key={i} className="bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-semibold text-slate-800">{getCategoryLabel(cat)}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                     <div className="flex flex-col gap-1">
                                         <h4 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">{p.title}</h4>

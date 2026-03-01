@@ -233,11 +233,11 @@ export default function Home() {
                                 <div className="aspect-[4/3] lg:aspect-auto lg:h-[600px] overflow-hidden">
                                     <div className="h-full w-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 filter grayscale group-hover:grayscale-0" style={{ backgroundImage: `url("${homeProjects[0].image_url}")` }}></div>
                                 </div>
-                                <div className="p-8 bg-white border border-[#e6dfcc] border-t-0">
+                                <div className="p-6 sm:p-8 bg-white border border-[#e6dfcc] border-t-0 overflow-hidden">
                                     <div className="flex flex-col gap-2">
                                         <span className="text-slate-400 text-xs font-bold uppercase tracking-wider font-[Noto_Sans]">{homeProjects[0].location}</span>
-                                        <h3 className="text-2xl font-[Newsreader] font-bold text-slate-900">{homeProjects[0].title}</h3>
-                                        <Link to="/portfolio" className="inline-flex items-center text-black text-xs font-bold uppercase tracking-widest mt-4 group-hover:underline underline-offset-4 decoration-1">
+                                        <h3 className="text-xl sm:text-2xl font-[Newsreader] font-bold text-slate-900">{homeProjects[0].title}</h3>
+                                        <Link to="/portfolio" className="inline-flex items-center text-black text-xs font-bold uppercase tracking-widest mt-4 group-hover:underline underline-offset-4 decoration-1 break-words">
                                             {t('home.portfolio.detail')}
                                         </Link>
                                     </div>
@@ -318,7 +318,7 @@ export default function Home() {
                 <div className="container mx-auto px-6 relative z-10">
                     <FadeIn direction="up" className="max-w-4xl mx-auto border border-[#d6cfbc] bg-white p-10 md:p-20 text-center shadow-sm relative overflow-hidden">
                         <h2 className="text-3xl md:text-5xl font-[Newsreader] font-medium text-slate-900 mb-6">{t('home.cta.title')}</h2>
-                        <p className="text-slate-500 text-lg mb-10 max-w-xl mx-auto font-[Noto_Sans] font-light">{t('home.cta.desc')}</p>
+                        <p className="text-slate-700 text-lg mb-10 max-w-xl mx-auto font-[Noto_Sans]">{t('home.cta.desc')}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to="/contact" className="bg-black text-white hover:bg-slate-800 px-6 py-3 sm:px-10 sm:py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
                                 {t('home.cta.btn1')}

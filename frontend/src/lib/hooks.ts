@@ -24,8 +24,21 @@ export function useProject(slugOrId: string) {
             setLoading(false);
             return;
         }
-        supabase.from('projects').select('*').or(`slug.eq.${slugOrId},id.eq.${slugOrId}`).single()
-            .then(({ data }) => { setProject(data); setLoading(false); });
+
+        // Check if slugOrId is a valid UUID
+        const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(slugOrId);
+
+        let query = supabase.from('projects').select('*');
+        if (isUuid) {
+            query = query.eq('id', slugOrId);
+        } else {
+            query = query.eq('slug', slugOrId);
+        }
+
+        query.single().then(({ data }) => {
+            setProject(data);
+            setLoading(false);
+        });
     }, [slugOrId]);
 
     return { project, loading };

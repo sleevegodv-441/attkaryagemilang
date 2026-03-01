@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import FadeIn from '../components/FadeIn';
 import { useProject } from '../lib/hooks';
+import { getCategoryLabel } from '../lib/supabaseClient';
 
 export default function ProjectDetail() {
     const { slug } = useParams<{ slug: string }>();
@@ -63,9 +64,13 @@ export default function ProjectDetail() {
 
             {/* Header */}
             <FadeIn direction="up" className="mb-10 text-center max-w-3xl mx-auto">
-                <span className="text-primary text-sm font-bold uppercase tracking-wider mb-3 block">
-                    {project.category.replace('_', ' ')}
-                </span>
+                <div className="flex flex-wrap items-center justify-center gap-3 mb-3">
+                    {project.category.split(',').map(c => c.trim()).filter(Boolean).map((cat, i) => (
+                        <span key={i} className="text-primary text-sm font-bold uppercase tracking-wider">
+                            {getCategoryLabel(cat)}
+                        </span>
+                    ))}
+                </div>
                 <h1 className="text-slate-900 text-4xl sm:text-5xl font-black leading-tight tracking-tight mb-6">
                     {project.title}
                 </h1>

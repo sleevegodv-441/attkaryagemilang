@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { supabase } from '../../lib/supabaseClient';
+import { supabase, projectCategories, categoryLabels } from '../../lib/supabaseClient';
 
-const categories = ['bangun_baru', 'renovasi', 'interior', 'commercial'];
-const catLabels: Record<string, string> = { bangun_baru: 'Bangun Baru', renovasi: 'Renovasi', interior: 'Interior', commercial: 'Commercial' };
+const categories = projectCategories;
+const catLabels = categoryLabels;
 
 export default function AdminProjectForm() {
     const { id } = useParams();
@@ -64,6 +64,20 @@ export default function AdminProjectForm() {
         }
     };
 
+    const selectedCategories = form.category ? form.category.split(',').map(c => c.trim()).filter(Boolean) : [];
+    const handleCategoryToggle = (c: string) => {
+        let newCats = [...selectedCategories];
+        if (newCats.includes(c)) {
+            newCats = newCats.filter(x => x !== c);
+        } else {
+            if (newCats.length >= 3) {
+                newCats.shift(); // keep max 3
+            }
+            newCats.push(c);
+        }
+        set('category', newCats.join(','));
+    };
+
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
             {/* Top Bar */}
@@ -107,10 +121,22 @@ export default function AdminProjectForm() {
                             </div>
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Category</label>
-                                    <select value={form.category} onChange={e => set('category', e.target.value)} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white">
-                                        {categories.map(c => <option key={c} value={c}>{catLabels[c]}</option>)}
-                                    </select>
+                                    <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5 flex justify-between items-center">
+                                        <span>Category <span className="text-gray-400 lowercase normal-case">(max 3)</span></span>
+                                        <span className="text-primary font-bold">{selectedCategories.length}/3</span>
+                                    </label>
+                                    <div className="flex flex-wrap gap-2 content-start min-h-[42px]">
+                                        {categories.map(c => (
+                                            <button
+                                                key={c}
+                                                type="button"
+                                                onClick={() => handleCategoryToggle(c)}
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all border ${selectedCategories.includes(c) ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border-[#d6cfbc] hover:bg-gray-50'}`}
+                                            >
+                                                {catLabels[c]}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                                 <div>
                                     <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Location</label>
@@ -119,7 +145,7 @@ export default function AdminProjectForm() {
                             </div>
                             <div>
                                 <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Short Description</label>
-                                <textarea value={form.description} onChange={e => set('description', e.target.value)} rows={3} placeholder="Brief project description for cards..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary" />
+                                <textarea value={form.description || ''} onChange={e => set('description', e.target.value)} rows={3} placeholder="Brief project description for cards..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary" />
                             </div>
                         </div>
 
@@ -129,7 +155,7 @@ export default function AdminProjectForm() {
                                 <span className="material-symbols-outlined text-primary text-base">edit_note</span> Full Project Detail (Content)
                             </h3>
                             <div>
-                                <textarea value={form.content} onChange={e => set('content', e.target.value)} rows={8} placeholder="Write detailed project case study here (supports markdown)..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y font-mono focus:outline-none focus:ring-2 focus:ring-primary" />
+                                <textarea value={form.content || ''} onChange={e => set('content', e.target.value)} rows={8} placeholder="Write detailed project case study here (supports markdown)..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y font-mono focus:outline-none focus:ring-2 focus:ring-primary" />
                             </div>
                         </div>
 
@@ -252,7 +278,12 @@ export default function AdminProjectForm() {
                                     )}
                                 </div>
                                 <div className="p-5">
-                                    <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">{form.location || 'Location'}</span>
+                                    <div className="flex flex-wrap gap-1 mb-2">
+                                        {selectedCategories.length > 0 ? selectedCategories.map(c => (
+                                            <span key={c} className="text-primary text-[9px] font-bold uppercase tracking-wider bg-accent px-1.5 py-0.5 rounded">{catLabels[c] || c}</span>
+                                        )) : <span className="text-gray-400 text-[9px] font-bold uppercase tracking-wider">No Category</span>}
+                                        <span className="text-gray-400 text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5">• {form.location || 'Location'}</span>
+                                    </div>
                                     <h3 className="text-lg font-bold text-gray-900 mt-1 font-[Newsreader]">{form.title || 'Project Title'}</h3>
                                     {form.description && <p className="text-gray-500 text-xs mt-2 line-clamp-2">{form.description}</p>}
                                 </div>

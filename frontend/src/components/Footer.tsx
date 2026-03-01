@@ -4,9 +4,14 @@ import { supabase } from '../lib/supabaseClient';
 
 export default function Footer() {
     const [settings, setSettings] = useState<Record<string, string>>({});
+    const [logoUrl, setLogoUrl] = useState('');
     useEffect(() => {
-        supabase.from('site_settings').select('key, value').in('key', ['address', 'phone', 'email', 'company_name']).then(({ data }) => {
-            if (data) setSettings(Object.fromEntries(data.map(i => [i.key, i.value])));
+        supabase.from('site_settings').select('key, value').in('key', ['address', 'phone', 'email', 'company_name', 'logo_url']).then(({ data }) => {
+            if (data) {
+                setSettings(Object.fromEntries(data.map(i => [i.key, i.value])));
+                const logo = data.find(d => d.key === 'logo_url');
+                if (logo?.value) setLogoUrl(logo.value);
+            }
         });
     }, []);
     return (
@@ -15,7 +20,11 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div className="col-span-1 md:col-span-1">
                         <div className="flex items-center gap-3 text-slate-900 mb-6">
-                            <span className="material-symbols-outlined !text-[28px]">apartment</span>
+                            {logoUrl ? (
+                                <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
+                            ) : (
+                                <span className="material-symbols-outlined !text-[28px]">apartment</span>
+                            )}
                             <h2 className="text-lg font-bold uppercase tracking-wider font-[Noto_Sans]">{settings.company_name || 'PT. ATT Karya Gemilang'}</h2>
                         </div>
                         <p className="text-slate-500 text-sm leading-relaxed mb-6 font-[Noto_Sans]">Mitra terpercaya dalam membangun dan merenovasi hunian impian dengan standar kualitas terbaik.</p>

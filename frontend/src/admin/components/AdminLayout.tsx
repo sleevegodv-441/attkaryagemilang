@@ -20,8 +20,15 @@ export default function AdminLayout() {
     const { signOut } = useAuth();
     const location = useLocation();
     const [unreadCount, setUnreadCount] = useState(0);
+    const [logoUrl, setLogoUrl] = useState('');
 
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+
+    useEffect(() => {
+        supabase.from('site_settings').select('key, value').eq('key', 'logo_url').single().then(({ data }) => {
+            if (data?.value) setLogoUrl(data.value);
+        });
+    }, []);
 
     useEffect(() => {
         const fetchUnread = async () => {
@@ -47,9 +54,13 @@ export default function AdminLayout() {
             {/* Mobile Header Menu Bar */}
             <div className="md:hidden fixed top-0 w-full h-16 bg-white border-b border-[#e6dfcc] z-40 flex items-center justify-between px-4">
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                        <span className="material-symbols-outlined text-white text-base">apartment</span>
-                    </div>
+                    {logoUrl ? (
+                        <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
+                    ) : (
+                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                            <span className="material-symbols-outlined text-white text-base">apartment</span>
+                        </div>
+                    )}
                     <h1 className="text-sm font-bold text-gray-900">ATT CMS</h1>
                 </div>
                 <button onClick={() => setIsMobileOpen(true)} className="p-2 text-gray-600 hover:bg-accent rounded-lg">
@@ -69,9 +80,13 @@ export default function AdminLayout() {
             <aside className={`w-64 md:w-60 bg-white border-r border-[#d6cfbc] flex flex-col fixed top-0 bottom-0 z-50 md:z-30 transition-transform duration-300 md:translate-x-0 ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}`}>
                 <div className="px-5 py-5 border-b border-[#e6dfcc] flex items-center justify-between">
                     <Link to="/admin" onClick={() => setIsMobileOpen(false)} className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                            <span className="material-symbols-outlined text-white text-base">apartment</span>
-                        </div>
+                        {logoUrl ? (
+                            <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
+                        ) : (
+                            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                <span className="material-symbols-outlined text-white text-base">apartment</span>
+                            </div>
+                        )}
                         <div>
                             <h1 className="text-sm font-bold text-gray-900">ATT CMS</h1>
                             <p className="text-[10px] text-gray-400">Content Manager</p>

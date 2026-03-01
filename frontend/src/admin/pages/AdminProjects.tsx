@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { supabase, type Project } from '../../lib/supabaseClient';
+import { supabase, type Project, getCategoryLabel } from '../../lib/supabaseClient';
 
 export default function AdminProjects() {
     const [projects, setProjects] = useState<Project[]>([]);
@@ -54,7 +54,9 @@ export default function AdminProjects() {
                                         <div className="flex-1 min-w-0">
                                             <h3 className="font-medium text-gray-900 text-sm truncate">{p.title}</h3>
                                             <div className="flex flex-wrap gap-1 mt-1">
-                                                <span className="bg-accent text-primary text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">{p.category?.replace('_', ' ')}</span>
+                                                {p.category?.split(',').map(c => c.trim()).filter(Boolean).map((cat, idx) => (
+                                                    <span key={idx} className="bg-accent text-primary text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">{getCategoryLabel(cat)}</span>
+                                                ))}
                                                 {p.location && <span className="text-[10px] text-gray-400 truncate max-w-[120px] sm:max-w-[200px]">{p.location}</span>}
                                                 {p.is_featured && <span className="bg-green-50 text-green-600 text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap">Featured</span>}
                                             </div>
