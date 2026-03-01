@@ -1,9 +1,19 @@
 import { motion } from 'framer-motion';
 
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
+
 export default function WhatsAppButton() {
+    const [wa, setWa] = useState('6287772229006');
+    useEffect(() => {
+        supabase.from('site_settings').select('value').eq('key', 'whatsapp').single().then(({ data }) => {
+            if (data?.value) setWa(data.value);
+        });
+    }, []);
+
     return (
         <motion.a
-            href="https://wa.me/6287772229006?text=Halo%20Tim%20ATT%20Karya%20Gemilang%2C%20saya%20tertarik%20untuk%20konsultasi."
+            href={`https://wa.me/${wa}?text=Halo%20Tim%20ATT%20Karya%20Gemilang%2C%20saya%20tertarik%20untuk%20konsultasi.`}
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-50 flex items-center justify-center size-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-500/30 hover:scale-110 transition-transform"

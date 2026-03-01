@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import FadeIn from '../components/FadeIn';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Calculator() {
     const { t } = useTranslation();
     const [area, setArea] = useState<number | ''>('');
     const [service, setService] = useState<string>('bangun_baru');
     const [spec, setSpec] = useState<string>('standard');
+    const [wa, setWa] = useState('6287772229006');
+
+    useEffect(() => {
+        supabase.from('site_settings').select('value').eq('key', 'whatsapp').single().then(({ data }) => {
+            if (data?.value) setWa(data.value);
+        });
+    }, []);
 
     const baseRates: Record<string, Record<string, number>> = {
         bangun_baru: {
@@ -143,7 +151,7 @@ export default function Calculator() {
 
                             <div className="space-y-4 mt-auto">
                                 <a
-                                    href={`https://wa.me/6287772229006?text=${encodeURIComponent(wamessage)}`}
+                                    href={`https://wa.me/${wa}?text=${encodeURIComponent(wamessage)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={`flex h-14 items-center justify-center bg-primary hover:bg-accent0 text-white font-bold rounded-xl transition-all gap-2 w-full ${(area && estimate > 0) ? 'opacity-100 cursor-pointer shadow-lg shadow-blue-500/30 hover:scale-[1.02]' : 'opacity-50 pointer-events-none'}`}

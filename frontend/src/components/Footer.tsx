@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
 
 export default function Footer() {
+    const [settings, setSettings] = useState<Record<string, string>>({});
+    useEffect(() => {
+        supabase.from('site_settings').select('key, value').in('key', ['address', 'phone', 'email', 'company_name']).then(({ data }) => {
+            if (data) setSettings(Object.fromEntries(data.map(i => [i.key, i.value])));
+        });
+    }, []);
     return (
         <footer className="bg-white border-t border-[#d6cfbc] pt-20 pb-10 mt-auto">
             <div className="container mx-auto px-6 lg:px-20">
@@ -8,7 +16,7 @@ export default function Footer() {
                     <div className="col-span-1 md:col-span-1">
                         <div className="flex items-center gap-3 text-slate-900 mb-6">
                             <span className="material-symbols-outlined !text-[28px]">apartment</span>
-                            <h2 className="text-lg font-bold uppercase tracking-wider font-[Noto_Sans]">PT. ATT Karya Gemilang</h2>
+                            <h2 className="text-lg font-bold uppercase tracking-wider font-[Noto_Sans]">{settings.company_name || 'PT. ATT Karya Gemilang'}</h2>
                         </div>
                         <p className="text-slate-500 text-sm leading-relaxed mb-6 font-[Noto_Sans]">Mitra terpercaya dalam membangun dan merenovasi hunian impian dengan standar kualitas terbaik.</p>
                         <div className="flex gap-4">
@@ -39,15 +47,15 @@ export default function Footer() {
                         <ul className="flex flex-col gap-3 text-slate-500 text-sm font-[Noto_Sans]">
                             <li className="flex items-start gap-3">
                                 <span className="material-symbols-outlined text-slate-900 text-base mt-0.5">location_on</span>
-                                <span>Jl. Arsitek No. 88, Jakarta Selatan, 12345</span>
+                                <span className="max-w-[200px]">{settings.address || 'Jl. Arsitek No. 88, Jakarta Selatan, 12345'}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-slate-900 text-base">call</span>
-                                <span>+62 21 5555 6789</span>
+                                <span>{settings.phone || '+62 21 5555 6789'}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="material-symbols-outlined text-slate-900 text-base">mail</span>
-                                <span>info@attkaryagemilang.com</span>
+                                <span>{settings.email?.split(' / ')[0] || 'info@attkaryagemilang.com'}</span>
                             </li>
                         </ul>
                     </div>

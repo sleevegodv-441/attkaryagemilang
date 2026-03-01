@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import FadeIn from '../components/FadeIn';
@@ -13,6 +13,19 @@ export default function Contact() {
         service: '',
         message: ''
     });
+    const [settings, setSettings] = useState<Record<string, string>>({});
+
+    useEffect(() => {
+        async function fetchSettings() {
+            const { data } = await supabase.from('site_settings').select('key, value');
+            if (data) {
+                const s: Record<string, string> = {};
+                data.forEach(item => s[item.key] = item.value);
+                setSettings(s);
+            }
+        }
+        fetchSettings();
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -50,8 +63,8 @@ export default function Contact() {
 
             const text = `Halo Tim ATT Karya Gemilang, saya ${formData.name ? formData.name : 'Ingin bertanya'} (${formData.phone ? formData.phone : '-'}).%0A%0ASaya tertarik dengan layanan: *${serviceLabel ? serviceLabel : '-'}*%0A%0APesan Detail:%0A${formData.message ? formData.message : '-'}`;
 
-            // Open WA in new tab
-            window.open(`https://wa.me/6287772229006?text=${text}`, '_blank');
+            const waNumber = settings.whatsapp || '6287772229006';
+            window.open(`https://wa.me/${waNumber}?text=${text}`, '_blank');
 
             // Reset form
             setTimeout(() => {
@@ -94,7 +107,7 @@ export default function Contact() {
                                 <div className="flex flex-col gap-1">
                                     <h3 className="font-bold text-lg text-black">{t('contact.wa_title')}</h3>
                                     <p className="text-slate-500 text-sm mb-1">{t('contact.wa_desc')}</p>
-                                    <a href="https://wa.me/6287772229006" target="_blank" rel="noopener noreferrer" className="text-slate-900 font-semibold hover:underline decoration-black">+62 877 7222 9006</a>
+                                    <a href={`https://wa.me/${settings.whatsapp || '6287772229006'}`} target="_blank" rel="noopener noreferrer" className="text-slate-900 font-semibold hover:underline decoration-black">{settings.phone || '+62 877 7222 9006'}</a>
                                 </div>
                             </div>
 
@@ -105,7 +118,7 @@ export default function Contact() {
                                 <div className="flex flex-col gap-1">
                                     <h3 className="font-bold text-lg text-black">{t('contact.email_title')}</h3>
                                     <p className="text-slate-500 text-sm mb-1">{t('contact.email_desc')}</p>
-                                    <a href="mailto:info@attkaryagemilang.com" className="text-slate-900 font-semibold hover:underline decoration-black">info@attkaryagemilang.com</a>
+                                    <a href={`mailto:${settings.email?.split(' / ')[0] || 'info@attkaryagemilang.com'}`} className="text-slate-900 font-semibold hover:underline decoration-black">{settings.email || 'info@attkaryagemilang.com'}</a>
                                 </div>
                             </div>
 
@@ -115,8 +128,8 @@ export default function Contact() {
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <h3 className="font-bold text-lg text-black">{t('contact.time_title')}</h3>
-                                    <p className="text-slate-500 text-sm">{t('contact.time_desc1')}</p>
-                                    <p className="text-slate-500 text-sm">{t('contact.time_desc2')}</p>
+                                    <p className="text-slate-500 text-sm">{settings.working_hours_weekday || t('contact.time_desc1')}</p>
+                                    <p className="text-slate-500 text-sm">{settings.working_hours_weekend || t('contact.time_desc2')}</p>
                                 </div>
                             </div>
 
@@ -126,7 +139,7 @@ export default function Contact() {
                                 </div>
                                 <div className="flex flex-col gap-1">
                                     <h3 className="font-bold text-lg text-black">{t('contact.loc_title')}</h3>
-                                    <p className="text-slate-500 text-sm leading-relaxed">{t('contact.loc_desc1')}<br />{t('contact.loc_desc2')}</p>
+                                    <p className="text-slate-500 text-sm leading-relaxed">{settings.address || t('contact.loc_desc1')}</p>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +228,7 @@ export default function Contact() {
             </div>
 
             <FadeIn direction="up" className="w-full h-[450px] bg-slate-100 relative border-y border-[#d6cfbc]">
-                <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052219430156!2d106.82726487573138!3d-6.255953993732565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3d52674251b%3A0x66c74577874944c!2sJl.%20Raya%20Konstruksi!5e0!3m2!1sen!2sid!4v1715582345678!5m2!1sen!2sid" width="100%" height="100%" className="grayscale" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade">
+                <iframe title="Google Maps Location" src={`https://maps.google.com/maps?q=${encodeURIComponent(settings.address || 'Penggilingan Cakung Jakarta Timur')}&t=&z=14&ie=UTF8&iwloc=&output=embed`} width="100%" height="100%" className="grayscale" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                 </iframe>
             </FadeIn>
         </main>
