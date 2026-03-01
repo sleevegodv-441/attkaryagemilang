@@ -6,7 +6,7 @@ export default function AdminGuard({ children }: { children: React.ReactNode }) 
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-slate-50">
+            <div className="min-h-screen flex items-center justify-center bg-accent">
                 <div className="flex flex-col items-center gap-4">
                     <span className="material-symbols-outlined text-4xl text-slate-400 animate-spin">progress_activity</span>
                     <p className="text-slate-500 text-sm">Loading...</p>

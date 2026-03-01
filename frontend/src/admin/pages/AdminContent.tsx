@@ -343,7 +343,7 @@ export default function AdminContent() {
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
             {/* Top Bar */}
-            <div className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <div className="bg-white border-b border-[#e6dfcc] px-6 py-4 flex items-center justify-between flex-shrink-0">
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-gray-400">apartment</span>
@@ -351,25 +351,25 @@ export default function AdminContent() {
                         <span className="text-gray-300">/</span>
                     </div>
                     <h1 className="text-lg font-bold text-gray-900">
-                        <span className="material-symbols-outlined text-base align-middle mr-1 text-blue-500">{pageConfig.icon}</span>
+                        <span className="material-symbols-outlined text-base align-middle mr-1 text-primary">{pageConfig.icon}</span>
                         {pageConfig.label} Page Editor
                     </h1>
                 </div>
                 <div className="flex items-center gap-3">
-                    <a href={pageConfig.previewUrl} target="_blank" className="flex items-center gap-2 text-sm text-gray-500 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50">
+                    <a href={pageConfig.previewUrl} target="_blank" className="flex items-center gap-2 text-sm text-gray-500 border border-[#d6cfbc] rounded-lg px-4 py-2 hover:bg-accent">
                         <span className="material-symbols-outlined text-sm">open_in_new</span> Preview
                     </a>
-                    <button onClick={saveAll} className="flex items-center gap-2 bg-blue-600 text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-blue-700">
+                    <button onClick={saveAll} className="flex items-center gap-2 bg-primary text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-primary-hover">
                         <span className="material-symbols-outlined text-sm">publish</span> Publish Changes
                     </button>
                 </div>
             </div>
 
             {/* Page tabs */}
-            <div className="bg-white border-b border-gray-100 px-6 py-2 flex gap-1 flex-shrink-0 overflow-x-auto">
+            <div className="bg-white border-b border-[#e6dfcc] px-6 py-2 flex gap-1 flex-shrink-0 overflow-x-auto">
                 {Object.entries(PAGE_MAP).map(([key, cfg]) => (
                     <button key={key} onClick={() => setActivePage(key)}
-                        className={`px-4 py-2 rounded-[10px] text-sm font-medium transition-colors flex items-center gap-2 whitespace-nowrap ${activePage === key ? 'bg-blue-50 text-blue-700 font-bold' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-50'
+                        className={`px-4 py-2 rounded-[10px] text-sm font-medium transition-colors flex items-center gap-2 whitespace-nowrap ${activePage === key ? 'bg-accent text-secondary font-bold' : 'text-gray-500 hover:text-gray-700 hover:bg-accent'
                             }`}>
                         <span className="material-symbols-outlined text-base">{cfg.icon}</span>
                         {cfg.label}
@@ -380,14 +380,14 @@ export default function AdminContent() {
             {/* Split Pane: Form | Preview */}
             <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Form */}
-                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto border-b lg:border-b-0 lg:border-r border-gray-100 bg-gray-50/50">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto border-b lg:border-b-0 lg:border-r border-[#e6dfcc] bg-accent/50">
                     {loading ? (
                         <div className="p-12 text-center"><span className="material-symbols-outlined animate-spin text-gray-300">progress_activity</span></div>
                     ) : (
                         <div className="p-6 space-y-5">
                             {pageConfig.sections.map(section => (
                                 <div key={section.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
-                                    <div className="px-5 py-3.5 bg-gray-50/50 flex items-center justify-between border-b border-gray-50">
+                                    <div className="px-5 py-3.5 bg-accent/50 flex items-center justify-between border-b border-gray-50">
                                         <div>
                                             <h3 className="text-sm font-bold text-gray-900">{section.label}</h3>
                                             <p className="text-[11px] text-gray-400 mt-0.5">{section.description}</p>
@@ -395,7 +395,7 @@ export default function AdminContent() {
                                         <div className="flex items-center gap-2">
                                             {saved === section.id && <span className="text-green-600 text-xs font-medium flex items-center gap-1"><span className="material-symbols-outlined text-xs">check_circle</span> Saved</span>}
                                             <button onClick={() => saveSection(section.id, section.fields)} disabled={saving === section.id}
-                                                className="bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-blue-100 transition-colors disabled:opacity-60 flex items-center gap-1">
+                                                className="bg-accent text-primary px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#e6dfcc] transition-colors disabled:opacity-60 flex items-center gap-1">
                                                 {saving === section.id ? <span className="material-symbols-outlined text-xs animate-spin">progress_activity</span> : <span className="material-symbols-outlined text-xs">save</span>} Save
                                             </button>
                                         </div>
@@ -409,22 +409,22 @@ export default function AdminContent() {
                                                     {field.type === 'image' ? (
                                                         <div className="space-y-2">
                                                             {values[ck] && (
-                                                                <div className="bg-gray-50 rounded-lg p-3 inline-block">
+                                                                <div className="bg-accent rounded-lg p-3 inline-block">
                                                                     <img src={values[ck]} alt="" className="h-16 object-contain" />
                                                                 </div>
                                                             )}
                                                             <div className="flex gap-2">
-                                                                <input value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} className="flex-1 px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-                                                                <label className="flex items-center gap-1 bg-blue-50 px-4 py-2.5 rounded-lg text-xs font-medium text-blue-600 hover:bg-blue-100 cursor-pointer transition-colors">
+                                                                <input value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} className="flex-1 px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                                                                <label className="flex items-center gap-1 bg-accent px-4 py-2.5 rounded-lg text-xs font-medium text-primary hover:bg-[#e6dfcc] cursor-pointer transition-colors">
                                                                     <span className="material-symbols-outlined text-sm">upload</span> Upload
                                                                     <input type="file" accept="image/*" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) handleImageUpload(ck, f); }} />
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     ) : field.type === 'textarea' ? (
-                                                        <textarea value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} rows={2} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                                        <textarea value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} rows={2} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                                                     ) : (
-                                                        <input value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                                        <input value={values[ck] || ''} onChange={e => setValues({ ...values, [ck]: e.target.value })} placeholder={field.placeholder} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                                                     )}
                                                 </div>
                                             );
@@ -438,7 +438,7 @@ export default function AdminContent() {
 
                 {/* Right: Live Preview */}
                 <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
-                    <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center justify-between flex-shrink-0">
+                    <div className="px-4 py-3 bg-white border-b border-[#e6dfcc] flex items-center justify-between flex-shrink-0">
                         <div className="flex items-center gap-2">
                             <span className="material-symbols-outlined text-gray-400 text-sm">desktop_windows</span>
                             <span className="text-xs font-medium text-gray-500">Live Preview</span>
@@ -448,7 +448,7 @@ export default function AdminContent() {
                         </button>
                     </div>
                     <div className="flex-1 p-4 overflow-hidden">
-                        <div className="w-full h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+                        <div className="w-full h-full bg-white rounded-xl shadow-lg overflow-hidden border border-[#e6dfcc]">
                             <iframe key={previewKey} src={pageConfig.previewUrl} className="w-full h-full border-0" title="Preview"
                                 style={{ transform: 'scale(0.75)', transformOrigin: 'top left', width: '133.33%', height: '133.33%' }} />
                         </div>

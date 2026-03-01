@@ -76,7 +76,7 @@ export default function AdminSettings() {
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
             {/* Top Bar */}
-            <div className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <div className="bg-white border-b border-[#e6dfcc] px-6 py-4 flex items-center justify-between flex-shrink-0">
                 <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-gray-400">settings</span>
                     <div>
@@ -86,10 +86,10 @@ export default function AdminSettings() {
                 </div>
                 <div className="flex items-center gap-3">
                     {saved && <span className="text-green-600 text-sm flex items-center gap-1"><span className="material-symbols-outlined text-sm">check_circle</span> Saved!</span>}
-                    <button onClick={() => setPreviewKey(k => k + 1)} className="text-sm text-gray-500 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50 flex items-center gap-1">
+                    <button onClick={() => setPreviewKey(k => k + 1)} className="text-sm text-gray-500 border border-[#d6cfbc] rounded-lg px-4 py-2 hover:bg-accent flex items-center gap-1">
                         <span className="material-symbols-outlined text-sm">refresh</span> Refresh Preview
                     </button>
-                    <button onClick={saveAll} disabled={saving} className="flex items-center gap-2 bg-blue-600 text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-blue-700 disabled:opacity-60">
+                    <button onClick={saveAll} disabled={saving} className="flex items-center gap-2 bg-primary text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-primary-hover disabled:opacity-60">
                         {saving ? <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span> : <span className="material-symbols-outlined text-sm">save</span>}
                         Save Changes
                     </button>
@@ -99,7 +99,7 @@ export default function AdminSettings() {
             {/* Split Pane */}
             <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Settings Form */}
-                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-accent/50 border-b lg:border-b-0 lg:border-r border-[#e6dfcc]">
                     {loading ? (
                         <div className="p-12 text-center"><span className="material-symbols-outlined animate-spin text-gray-300">progress_activity</span></div>
                     ) : (
@@ -108,9 +108,9 @@ export default function AdminSettings() {
                                 const sectionSettings = settings.filter(s => section.keys.includes(s.key));
                                 return (
                                     <div key={section.id} className="bg-white rounded-xl overflow-hidden shadow-sm">
-                                        <div className="px-5 py-3.5 bg-gray-50/50 flex items-center gap-3">
-                                            <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
-                                                <span className="material-symbols-outlined text-blue-600 text-base">{section.icon}</span>
+                                        <div className="px-5 py-3.5 bg-accent/50 flex items-center gap-3">
+                                            <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
+                                                <span className="material-symbols-outlined text-primary text-base">{section.icon}</span>
                                             </div>
                                             <div>
                                                 <h2 className="text-sm font-bold text-gray-900">{section.label}</h2>
@@ -127,20 +127,20 @@ export default function AdminSettings() {
                                                         {isImage ? (
                                                             <div className="space-y-2">
                                                                 {values[key] && (
-                                                                    <div className="bg-gray-50 rounded-lg p-3 inline-block">
+                                                                    <div className="bg-accent rounded-lg p-3 inline-block">
                                                                         <img src={values[key]} alt="" className="h-12 object-contain" />
                                                                     </div>
                                                                 )}
                                                                 <div className="flex gap-2">
-                                                                    <input value={values[key] || ''} onChange={e => setValues({ ...values, [key]: e.target.value })} placeholder={meta.placeholder} className="flex-1 px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-                                                                    <label className="flex items-center gap-1 bg-blue-50 px-4 py-2.5 rounded-lg text-xs font-medium text-blue-600 hover:bg-blue-100 cursor-pointer transition-colors">
+                                                                    <input value={values[key] || ''} onChange={e => setValues({ ...values, [key]: e.target.value })} placeholder={meta.placeholder} className="flex-1 px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                                                                    <label className="flex items-center gap-1 bg-accent px-4 py-2.5 rounded-lg text-xs font-medium text-primary hover:bg-[#e6dfcc] cursor-pointer transition-colors">
                                                                         <span className="material-symbols-outlined text-sm">upload</span> Upload
                                                                         <input type="file" accept="image/*" className="hidden" onChange={e => { const f = e.target.files?.[0]; if (f) handleImageUpload(key, f); }} />
                                                                     </label>
                                                                 </div>
                                                             </div>
                                                         ) : (
-                                                            <input value={values[key] || ''} onChange={e => setValues({ ...values, [key]: e.target.value })} placeholder={meta.placeholder} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                                            <input value={values[key] || ''} onChange={e => setValues({ ...values, [key]: e.target.value })} placeholder={meta.placeholder} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                                                         )}
                                                     </div>
                                                 );
@@ -155,7 +155,7 @@ export default function AdminSettings() {
 
                 {/* Right: Live Preview */}
                 <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
-                    <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center gap-2 flex-shrink-0">
+                    <div className="px-4 py-3 bg-white border-b border-[#e6dfcc] flex items-center gap-2 flex-shrink-0">
                         <span className="material-symbols-outlined text-gray-400 text-sm">desktop_windows</span>
                         <span className="text-xs font-medium text-gray-500">Live Preview — Homepage</span>
                     </div>

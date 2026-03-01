@@ -55,7 +55,7 @@ export default function ProjectDetail() {
 
             {/* Back Button */}
             <div className="mb-8">
-                <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors uppercase tracking-wider">
+                <Link to="/portfolio" className="inline-flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-primary transition-colors uppercase tracking-wider">
                     <span className="material-symbols-outlined text-[16px]">arrow_back</span>
                     {t('nav.portfolio', 'Portfolio')}
                 </Link>
@@ -63,7 +63,7 @@ export default function ProjectDetail() {
 
             {/* Header */}
             <FadeIn direction="up" className="mb-10 text-center max-w-3xl mx-auto">
-                <span className="text-blue-600 text-sm font-bold uppercase tracking-wider mb-3 block">
+                <span className="text-primary text-sm font-bold uppercase tracking-wider mb-3 block">
                     {project.category.replace('_', ' ')}
                 </span>
                 <h1 className="text-slate-900 text-4xl sm:text-5xl font-black leading-tight tracking-tight mb-6">
@@ -80,14 +80,14 @@ export default function ProjectDetail() {
 
             {/* Hero Image */}
             <FadeIn direction="up" delay={0.1} className="mb-16">
-                <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-xl border border-slate-100 bg-slate-100">
+                <div className="aspect-[16/9] w-full rounded-2xl overflow-hidden shadow-xl border border-[#e6dfcc] bg-slate-100">
                     <img src={project.image_url} alt={project.title} className="w-full h-full object-cover" />
                 </div>
             </FadeIn>
 
             {/* Metadata Stats */}
             {(project.client_name || project.duration || project.area) && (
-                <FadeIn direction="up" delay={0.2} className="mb-16 max-w-4xl mx-auto bg-slate-50 rounded-2xl p-6 sm:p-10 border border-slate-100">
+                <FadeIn direction="up" delay={0.2} className="mb-16 max-w-4xl mx-auto bg-accent rounded-2xl p-6 sm:p-10 border border-[#e6dfcc]">
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
                         {project.client_name && (
                             <div className="pt-4 sm:pt-0 sm:px-6 first:pt-0 first:px-0">
@@ -123,10 +123,10 @@ export default function ProjectDetail() {
             {/* Image Gallery */}
             {project.image_gallery && project.image_gallery.length > 0 && (
                 <FadeIn direction="up" delay={0.4} className="mb-20">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-8 border-b border-slate-200 pb-4">Galeri Proyek</h3>
+                    <h3 className="text-2xl font-bold text-slate-900 mb-8 border-b border-[#d6cfbc] pb-4">Galeri Proyek</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         {project.image_gallery.map((url, i) => (
-                            <div key={i} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-slate-100" onClick={() => setLightboxSrc(url)}>
+                            <div key={i} className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all border border-[#e6dfcc]" onClick={() => setLightboxSrc(url)}>
                                 <img src={url} alt={`${project.title} Gallery ${i + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                                     <span className="material-symbols-outlined text-white opacity-0 group-hover:opacity-100 transform scale-50 group-hover:scale-100 transition-all duration-300 drop-shadow-md text-4xl">zoom_in</span>
@@ -138,10 +138,10 @@ export default function ProjectDetail() {
             )}
 
             {/* CTA Section */}
-            <FadeIn direction="up" delay={0.5} className="mt-16 pt-16 border-t border-slate-200 text-center">
+            <FadeIn direction="up" delay={0.5} className="mt-16 pt-16 border-t border-[#d6cfbc] text-center">
                 <h2 className="text-3xl font-black text-slate-900 mb-4">Tertarik Membuat Proyek Serupa?</h2>
                 <p className="text-slate-500 mb-8 max-w-2xl mx-auto">Diskusikan visi Anda bersama kami dan dapatkan estimasi biaya secara gratis.</p>
-                <Link to="/contact" className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-1">
+                <Link to="/contact" className="inline-block bg-primary hover:bg-primary-hover text-white font-bold py-3 px-8 rounded-lg shadow-lg shadow-blue-500/30 transition-all hover:-translate-y-1">
                     Hubungi Kami Sekarang
                 </Link>
             </FadeIn>

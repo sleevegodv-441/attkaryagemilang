@@ -73,7 +73,7 @@ export default function BlogDetail() {
                         <span className="text-[10px] font-medium text-gray-400 font-mono">{formatDate(post.published_at)}</span>
                     </div>
                     <h1 className="text-3xl md:text-5xl font-[Newsreader] font-bold text-slate-900 mb-6 leading-tight">{post.title}</h1>
-                    <p className="text-lg text-slate-500 font-light leading-relaxed mb-10 border-b border-gray-100 pb-10">{post.excerpt}</p>
+                    <p className="text-lg text-slate-500 font-light leading-relaxed mb-10 border-b border-[#e6dfcc] pb-10">{post.excerpt}</p>
                 </FadeIn>
 
                 <FadeIn direction="up" delay={0.2}>
@@ -82,7 +82,7 @@ export default function BlogDetail() {
                     </div>
                 </FadeIn>
 
-                <FadeIn direction="up" delay={0.3} className="mt-16 pt-8 border-t border-gray-100">
+                <FadeIn direction="up" delay={0.3} className="mt-16 pt-8 border-t border-[#e6dfcc]">
                     <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
                         <Link to="/blog" className="flex items-center gap-2 text-black font-bold text-xs uppercase tracking-widest hover:underline underline-offset-4">
                             <span className="material-symbols-outlined text-sm">arrow_back</span>

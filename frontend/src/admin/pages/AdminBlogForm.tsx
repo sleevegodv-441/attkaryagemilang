@@ -44,14 +44,14 @@ export default function AdminBlogForm() {
 
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
-            <div className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <div className="bg-white border-b border-[#e6dfcc] px-6 py-4 flex items-center justify-between flex-shrink-0">
                 <div className="flex items-center gap-3">
                     <button onClick={() => navigate('/admin/blog')} className="text-gray-400 hover:text-gray-700 transition-colors"><span className="material-symbols-outlined">arrow_back</span></button>
                     <div><h1 className="text-lg font-bold text-gray-900">{isEdit ? 'Edit Article' : 'New Article'}</h1><p className="text-xs text-gray-400">Write and publish blog content</p></div>
                 </div>
                 <div className="flex items-center gap-3">
-                    <button onClick={() => navigate('/admin/blog')} className="text-sm text-gray-500 border border-gray-200 rounded-lg px-4 py-2 hover:bg-gray-50 transition-colors">Cancel</button>
-                    <button onClick={(e) => handleSubmit(e as unknown as React.FormEvent)} disabled={saving} className="flex items-center gap-2 bg-blue-600 text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-blue-700 disabled:opacity-60 transition-colors">
+                    <button onClick={() => navigate('/admin/blog')} className="text-sm text-gray-500 border border-[#d6cfbc] rounded-lg px-4 py-2 hover:bg-accent transition-colors">Cancel</button>
+                    <button onClick={(e) => handleSubmit(e as unknown as React.FormEvent)} disabled={saving} className="flex items-center gap-2 bg-primary text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-primary-hover disabled:opacity-60 transition-colors">
                         {saving && <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span>}
                         <span className="material-symbols-outlined text-sm">publish</span> {isEdit ? 'Update' : 'Publish'}
                     </button>
@@ -60,38 +60,38 @@ export default function AdminBlogForm() {
 
             <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
                 {/* Left: Form */}
-                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-accent/50 border-b lg:border-b-0 lg:border-r border-[#e6dfcc]">
                     <form onSubmit={handleSubmit} className="p-6 space-y-5">
-                        <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">article</span> Article Info</h3>
+                        <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">article</span> Article Info</h3>
                             <div>
                                 <label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Title</label>
-                                <input value={form.title} onChange={e => { set('title', e.target.value); if (!form.slug) setForm(f => ({ ...f, slug: generateSlug(e.target.value) })); }} required placeholder="Article title" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                <input value={form.title} onChange={e => { set('title', e.target.value); if (!form.slug) setForm(f => ({ ...f, slug: generateSlug(e.target.value) })); }} required placeholder="Article title" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
-                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Slug</label><input value={form.slug} onChange={e => set('slug', e.target.value)} placeholder="auto-generated" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
-                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Category</label><input value={form.category} onChange={e => set('category', e.target.value)} placeholder="Renovasi, Tips, etc" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
+                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Slug</label><input value={form.slug} onChange={e => set('slug', e.target.value)} placeholder="auto-generated" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
+                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Category</label><input value={form.category} onChange={e => set('category', e.target.value)} placeholder="Renovasi, Tips, etc" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
                             </div>
-                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Excerpt</label><textarea value={form.excerpt} onChange={e => set('excerpt', e.target.value)} rows={2} placeholder="Brief summary..." className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
+                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Excerpt</label><textarea value={form.excerpt} onChange={e => set('excerpt', e.target.value)} rows={2} placeholder="Brief summary..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
                         </div>
 
-                        <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">search</span> SEO Metadata</h3>
-                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Title</label><input value={form.meta_title} onChange={e => set('meta_title', e.target.value)} placeholder="SEO Title (optional)" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
-                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Description</label><textarea value={form.meta_desc} onChange={e => set('meta_desc', e.target.value)} rows={2} placeholder="SEO Description (optional)" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
-                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Keywords</label><textarea value={form.meta_keywords} onChange={e => set('meta_keywords', e.target.value)} rows={2} placeholder="keyword1, keyword2, keyword3" className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
+                        <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">search</span> SEO Metadata</h3>
+                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Title</label><input value={form.meta_title} onChange={e => set('meta_title', e.target.value)} placeholder="SEO Title (optional)" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
+                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Description</label><textarea value={form.meta_desc} onChange={e => set('meta_desc', e.target.value)} rows={2} placeholder="SEO Description (optional)" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
+                            <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Meta Keywords</label><textarea value={form.meta_keywords} onChange={e => set('meta_keywords', e.target.value)} rows={2} placeholder="keyword1, keyword2, keyword3" className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
                         </div>
 
-                        <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">edit_note</span> Content</h3>
-                            <textarea value={form.content} onChange={e => set('content', e.target.value)} rows={14} placeholder="Write your article (supports markdown)..." className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm resize-y font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                        <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">edit_note</span> Content</h3>
+                            <textarea value={form.content} onChange={e => set('content', e.target.value)} rows={14} placeholder="Write your article (supports markdown)..." className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm resize-y font-mono focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                         </div>
 
-                        <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">image</span> Cover Image</h3>
+                        <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">image</span> Cover Image</h3>
                             {form.image_url && <img src={form.image_url} alt="" className="w-full h-44 object-cover rounded-lg" />}
                             <div className="flex gap-2">
-                                <input value={form.image_url} onChange={e => set('image_url', e.target.value)} placeholder="Paste image URL" className="flex-1 px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                <input value={form.image_url} onChange={e => set('image_url', e.target.value)} placeholder="Paste image URL" className="flex-1 px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                                 <label className="flex items-center gap-1 bg-gray-100 px-4 py-2.5 rounded-lg text-xs font-medium text-gray-600 hover:bg-gray-200 cursor-pointer transition-colors">
                                     <span className="material-symbols-outlined text-sm">upload</span> Upload
                                     <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
@@ -99,11 +99,11 @@ export default function AdminBlogForm() {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-xl shadow-sm border-gray-100 border p-5 space-y-4">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">settings</span> Settings</h3>
+                        <div className="bg-white rounded-xl shadow-sm border-[#e6dfcc] border p-5 space-y-4">
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">settings</span> Settings</h3>
                             <div className="grid grid-cols-2 gap-4">
-                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Publish Date</label><input type="datetime-local" value={form.published_at} onChange={e => set('published_at', e.target.value)} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" /></div>
-                                <div className="flex items-end pb-1"><label className="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" checked={form.is_featured} onChange={e => set('is_featured', e.target.checked as unknown as string)} className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 border-gray-300" /><span className="text-sm text-gray-700">Featured article</span></label></div>
+                                <div><label className="block text-[11px] font-semibold text-gray-500 uppercase tracking-wider mb-1.5">Publish Date</label><input type="datetime-local" value={form.published_at} onChange={e => set('published_at', e.target.value)} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" /></div>
+                                <div className="flex items-end pb-1"><label className="flex items-center gap-2.5 cursor-pointer"><input type="checkbox" checked={form.is_featured} onChange={e => set('is_featured', e.target.checked as unknown as string)} className="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300" /><span className="text-sm text-gray-700">Featured article</span></label></div>
                             </div>
                         </div>
                     </form>
@@ -111,7 +111,7 @@ export default function AdminBlogForm() {
 
                 {/* Right: Live Card Preview */}
                 <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
-                    <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center gap-2 flex-shrink-0">
+                    <div className="px-4 py-3 bg-white border-b border-[#e6dfcc] flex items-center gap-2 flex-shrink-0">
                         <span className="material-symbols-outlined text-gray-400 text-sm">visibility</span>
                         <span className="text-xs font-medium text-gray-500">Live Preview</span>
                         <span className="text-[10px] text-gray-400 ml-2">— Tampilan kartu di halaman blog</span>
@@ -119,7 +119,7 @@ export default function AdminBlogForm() {
                     <div className="flex-1 p-8 flex items-start justify-center overflow-y-auto">
                         <div className="w-full max-w-sm">
                             {/* Website-style Blog Card Preview */}
-                            <div className="bg-white shadow-lg overflow-hidden rounded-xl border border-gray-100 group">
+                            <div className="bg-white shadow-lg overflow-hidden rounded-xl border border-[#e6dfcc] group">
                                 <div className="aspect-[16/10] overflow-hidden bg-gray-200 relative">
                                     <div className="absolute top-4 left-4 z-10 flex gap-2">
                                         <span className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-gray-900">
@@ -145,7 +145,7 @@ export default function AdminBlogForm() {
                                     <p className="text-sm text-gray-500 mt-3 line-clamp-2 leading-relaxed">
                                         {form.excerpt || 'Ringkasan artikel akan tampil di sini. Pastikan kalimat awal menarik untuk dibaca.'}
                                     </p>
-                                    <div className="mt-5 flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-wider">
+                                    <div className="mt-5 flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
                                         Baca Selengkapnya
                                         <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
                                     </div>
@@ -153,11 +153,11 @@ export default function AdminBlogForm() {
                             </div>
 
                             {/* Mini info box */}
-                            <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4 space-y-2">
-                                <p className="text-xs font-medium text-blue-700 flex items-center gap-1.5">
+                            <div className="mt-6 bg-accent border border-blue-200 rounded-xl p-4 space-y-2">
+                                <p className="text-xs font-medium text-secondary flex items-center gap-1.5">
                                     <span className="material-symbols-outlined text-sm">info</span> Preview kartu ini akan tampil di:
                                 </p>
-                                <div className="text-[11px] text-blue-600 space-y-1">
+                                <div className="text-[11px] text-primary space-y-1">
                                     <p>📍 Halaman <strong>Blog</strong> — grid artikel terbaru</p>
                                     <p>📍 Halaman <strong>Home</strong> — jika ditandai sebagai "Featured"</p>
                                 </div>

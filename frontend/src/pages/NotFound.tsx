@@ -16,7 +16,7 @@ export default function NotFound() {
                         <span className="material-symbols-outlined text-sm">home</span>
                         Kembali ke Beranda
                     </Link>
-                    <Link to="/contact" className="h-12 px-8 border border-black text-black font-medium flex items-center justify-center hover:bg-slate-50 transition-colors">
+                    <Link to="/contact" className="h-12 px-8 border border-black text-black font-medium flex items-center justify-center hover:bg-accent transition-colors">
                         Hubungi Kami
                     </Link>
                 </div>

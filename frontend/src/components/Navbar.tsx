@@ -47,7 +47,7 @@ export default function Navbar() {
     ];
 
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b bg-white/95 backdrop-blur-md px-6 lg:px-20 transition-all duration-300 ${scrolled ? 'py-3 border-gray-200 shadow-md bg-white/98' : 'py-5 border-gray-100'}`}>
+        <header className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between border-b bg-white/95 backdrop-blur-md px-6 lg:px-20 transition-all duration-300 ${scrolled ? 'py-3 border-[#d6cfbc] shadow-md bg-white/98' : 'py-5 border-[#e6dfcc]'}`}>
             <Link to="/" className="flex items-center gap-4 text-black" onClick={() => setMobileOpen(false)}>
                 {logoUrl ? (
                     <img src={logoUrl} alt="Logo" className="h-8 w-auto object-contain" />
@@ -64,13 +64,13 @@ export default function Navbar() {
                         <Link key={link.to} to={link.to} className="text-sm font-medium leading-normal text-slate-600 hover:text-black transition-colors font-[Noto_Sans]">{link.label}</Link>
                     ))}
                 </nav>
-                <div className="flex gap-4 items-center border-l border-gray-200 pl-6">
+                <div className="flex gap-4 items-center border-l border-[#d6cfbc] pl-6">
                     <Link to="/contact" className="flex h-10 items-center justify-center bg-black px-6 text-white text-sm font-medium hover:bg-slate-800 transition-all font-[Noto_Sans]">
                         {t('nav.cta')}
                     </Link>
                     <button
                         onClick={toggleLanguage}
-                        className="flex h-10 w-10 items-center justify-center border border-gray-200 text-slate-900 hover:bg-gray-50 transition-all"
+                        className="flex h-10 w-10 items-center justify-center border border-[#d6cfbc] text-slate-900 hover:bg-accent transition-all"
                     >
                         <span className="text-xs font-bold font-[Noto_Sans]">
                             {(i18n.language || 'id').startsWith('id') ? 'EN' : 'ID'}
@@ -86,15 +86,15 @@ export default function Navbar() {
 
             {/* Mobile menu panel */}
             {mobileOpen && (
-                <div className="absolute top-full left-0 w-full bg-white border-b border-gray-200 shadow-lg lg:hidden">
+                <div className="absolute top-full left-0 w-full bg-white border-b border-[#d6cfbc] shadow-lg lg:hidden">
                     <nav className="flex flex-col p-6 gap-4">
                         {navLinks.map((link) => (
-                            <Link key={link.to} to={link.to} onClick={() => setMobileOpen(false)} className="text-base font-medium text-slate-700 hover:text-black py-2 border-b border-gray-100 font-[Noto_Sans]">{link.label}</Link>
+                            <Link key={link.to} to={link.to} onClick={() => setMobileOpen(false)} className="text-base font-medium text-slate-700 hover:text-black py-2 border-b border-[#e6dfcc] font-[Noto_Sans]">{link.label}</Link>
                         ))}
                         <Link to="/contact" onClick={() => setMobileOpen(false)} className="mt-2 flex h-12 items-center justify-center bg-black text-white font-medium font-[Noto_Sans]">
                             {t('nav.cta')}
                         </Link>
-                        <button onClick={() => { toggleLanguage(); setMobileOpen(false); }} className="flex h-10 items-center justify-center border border-gray-200 text-slate-900 font-[Noto_Sans] font-bold text-sm">
+                        <button onClick={() => { toggleLanguage(); setMobileOpen(false); }} className="flex h-10 items-center justify-center border border-[#d6cfbc] text-slate-900 font-[Noto_Sans] font-bold text-sm">
                             {(i18n.language || 'id').startsWith('id') ? 'English' : 'Indonesia'}
                         </button>
                     </nav>

@@ -46,12 +46,12 @@ export default function AdminDashboard() {
             {/* Stats Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
                 {cards.map(card => (
-                    <Link key={card.label} to={card.to} className="bg-white rounded-2xl p-5 border border-gray-100 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group">
+                    <Link key={card.label} to={card.to} className="bg-white rounded-2xl p-5 border border-[#e6dfcc] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 group">
                         <div className="flex items-center justify-between mb-4">
                             <div className={`bg-gradient-to-br ${card.gradient} text-white p-2.5 rounded-xl`}>
                                 <span className="material-symbols-outlined text-xl">{card.icon}</span>
                             </div>
-                            <span className="material-symbols-outlined text-gray-200 group-hover:text-blue-500 group-hover:translate-x-1 transition-all">arrow_forward</span>
+                            <span className="material-symbols-outlined text-gray-200 group-hover:text-primary group-hover:translate-x-1 transition-all">arrow_forward</span>
                         </div>
                         <p className="text-3xl font-bold text-gray-900">{card.count}</p>
                         <p className="text-gray-400 text-sm mt-1">{card.label}</p>
@@ -64,9 +64,9 @@ export default function AdminDashboard() {
                 <h2 className="text-lg font-bold text-gray-900 mb-4">Quick Actions</h2>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                     {quickLinks.map(link => (
-                        <Link key={link.label} to={link.to} className="bg-white rounded-xl p-4 border border-gray-100 hover:border-blue-200 hover:bg-blue-50/30 transition-all duration-200 flex items-center gap-3 group">
-                            <div className="w-10 h-10 rounded-lg bg-gray-50 group-hover:bg-blue-50 flex items-center justify-center transition-colors">
-                                <span className="material-symbols-outlined text-gray-400 group-hover:text-blue-600 transition-colors">{link.icon}</span>
+                        <Link key={link.label} to={link.to} className="bg-white rounded-xl p-4 border border-[#e6dfcc] hover:border-blue-200 hover:bg-accent/30 transition-all duration-200 flex items-center gap-3 group">
+                            <div className="w-10 h-10 rounded-lg bg-accent group-hover:bg-accent flex items-center justify-center transition-colors">
+                                <span className="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors">{link.icon}</span>
                             </div>
                             <div>
                                 <p className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{link.label}</p>

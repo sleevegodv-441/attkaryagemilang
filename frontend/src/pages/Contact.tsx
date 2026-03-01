@@ -67,7 +67,7 @@ export default function Contact() {
     return (
         <main className="flex-grow font-[Manrope]">
             <SEO titleKey="nav.contact" descriptionKey="contact.desc" />
-            <div className="relative w-full h-[350px] flex items-center justify-center bg-slate-50 border-b border-slate-100">
+            <div className="relative w-full h-[350px] flex items-center justify-center bg-accent border-b border-[#e6dfcc]">
                 <FadeIn direction="up" className="text-center px-4 max-w-4xl">
                     <h1 className="text-slate-900 text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em] mb-4">
                         {t('contact.title')}
@@ -87,7 +87,7 @@ export default function Contact() {
                         </div>
 
                         <div className="grid gap-6">
-                            <div className="flex gap-5 items-start p-6 border border-slate-200 bg-white hover:border-black transition-colors group">
+                            <div className="flex gap-5 items-start p-6 border border-[#d6cfbc] bg-white hover:border-black transition-colors group">
                                 <div className="text-black bg-slate-100 p-3 flex items-center justify-center">
                                     <span className="material-symbols-outlined">chat</span>
                                 </div>
@@ -98,7 +98,7 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <div className="flex gap-5 items-start p-6 border border-slate-200 bg-white hover:border-black transition-colors group">
+                            <div className="flex gap-5 items-start p-6 border border-[#d6cfbc] bg-white hover:border-black transition-colors group">
                                 <div className="text-black bg-slate-100 p-3 flex items-center justify-center">
                                     <span className="material-symbols-outlined">mail</span>
                                 </div>
@@ -109,7 +109,7 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <div className="flex gap-5 items-start p-6 border border-slate-200 bg-white hover:border-black transition-colors group">
+                            <div className="flex gap-5 items-start p-6 border border-[#d6cfbc] bg-white hover:border-black transition-colors group">
                                 <div className="text-black bg-slate-100 p-3 flex items-center justify-center">
                                     <span className="material-symbols-outlined">schedule</span>
                                 </div>
@@ -120,7 +120,7 @@ export default function Contact() {
                                 </div>
                             </div>
 
-                            <div className="flex gap-5 items-start p-6 border border-slate-200 bg-white hover:border-black transition-colors group">
+                            <div className="flex gap-5 items-start p-6 border border-[#d6cfbc] bg-white hover:border-black transition-colors group">
                                 <div className="text-black bg-slate-100 p-3 flex items-center justify-center">
                                     <span className="material-symbols-outlined">location_on</span>
                                 </div>
@@ -132,7 +132,7 @@ export default function Contact() {
                         </div>
                     </FadeIn>
 
-                    <FadeIn direction="right" delay={0.2} className="flex flex-col gap-8 bg-white p-10 border border-slate-200 shadow-sm">
+                    <FadeIn direction="right" delay={0.2} className="flex flex-col gap-8 bg-white p-10 border border-[#d6cfbc] shadow-sm">
                         <div className="flex flex-col gap-2">
                             <h2 className="text-2xl font-bold leading-tight text-black">{t('contact.form_title')}</h2>
                             <p className="text-slate-500 text-sm">{t('contact.form_desc')}</p>
@@ -214,7 +214,7 @@ export default function Contact() {
                 </div>
             </div>
 
-            <FadeIn direction="up" className="w-full h-[450px] bg-slate-100 relative border-y border-slate-200">
+            <FadeIn direction="up" className="w-full h-[450px] bg-slate-100 relative border-y border-[#d6cfbc]">
                 <iframe title="Google Maps Location" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052219430156!2d106.82726487573138!3d-6.255953993732565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3d52674251b%3A0x66c74577874944c!2sJl.%20Raya%20Konstruksi!5e0!3m2!1sen!2sid!4v1715582345678!5m2!1sen!2sid" width="100%" height="100%" className="grayscale" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade">
                 </iframe>
             </FadeIn>

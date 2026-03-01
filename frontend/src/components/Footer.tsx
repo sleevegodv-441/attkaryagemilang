@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
-        <footer className="bg-white border-t border-gray-200 pt-20 pb-10 mt-auto">
+        <footer className="bg-white border-t border-[#d6cfbc] pt-20 pb-10 mt-auto">
             <div className="container mx-auto px-6 lg:px-20">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
                     <div className="col-span-1 md:col-span-1">
@@ -52,7 +52,7 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-[Noto_Sans]">
+                <div className="border-t border-[#e6dfcc] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400 font-[Noto_Sans]">
                     <p>© 2024 PT. ATT Karya Gemilang. All rights reserved.</p>
                     <div className="flex gap-6 items-center">
                         <Link to="/admin/login" className="hover:text-black transition-colors font-medium">Staff Login</Link>

@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
         <HelmetProvider>
             <I18nextProvider i18n={i18n}>
                 <AuthProvider>
-                    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div></div>}>
+                    <Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-white"><div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div></div>}>
                         <App />
                     </Suspense>
                 </AuthProvider>

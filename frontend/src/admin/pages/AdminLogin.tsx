@@ -81,7 +81,7 @@ export default function AdminLogin() {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
-                                        className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:bg-white text-sm transition-all"
+                                        className="w-full pl-12 pr-4 py-3.5 bg-accent border border-[#d6cfbc] rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:bg-white text-sm transition-all"
                                         placeholder="admin@attkaryagemilang.com"
                                     />
                                 </div>
@@ -96,7 +96,7 @@ export default function AdminLogin() {
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         required
-                                        className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:bg-white text-sm transition-all"
+                                        className="w-full pl-12 pr-4 py-3.5 bg-accent border border-[#d6cfbc] rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900 focus:border-slate-900 focus:bg-white text-sm transition-all"
                                         placeholder="••••••••"
                                     />
                                 </div>

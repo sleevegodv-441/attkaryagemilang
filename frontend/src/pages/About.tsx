@@ -9,10 +9,10 @@ export default function About() {
         <main className="flex-grow bg-white font-[Noto_Sans]">
             <SEO titleKey="nav.about" descriptionKey="about.desc" />
             {/* Hero Section */}
-            <section className="relative overflow-hidden bg-white border-b border-gray-100 py-24 lg:py-32">
+            <section className="relative overflow-hidden bg-white border-b border-[#e6dfcc] py-24 lg:py-32">
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
                     <FadeIn direction="up" className="max-w-4xl">
-                        <div className="inline-flex items-center justify-center px-4 py-1.5 border border-slate-200 bg-white mb-8">
+                        <div className="inline-flex items-center justify-center px-4 py-1.5 border border-[#d6cfbc] bg-white mb-8">
                             <span className="text-xs font-semibold text-slate-800 tracking-widest uppercase">{t('about.badge')}</span>
                         </div>
                         <h1 className="text-4xl md:text-6xl font-[Newsreader] font-medium text-slate-900 leading-[1.1] tracking-tight mb-8">
@@ -27,7 +27,7 @@ export default function About() {
             </section>
 
             {/* Vision & Mission Section */}
-            <section className="py-24 bg-slate-50">
+            <section className="py-24 bg-accent">
                 <div className="container mx-auto px-6 lg:px-20">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
                         <FadeIn direction="left" className="relative aspect-[4/5] w-full max-w-md mx-auto lg:mx-0 shadow-xl overflow-hidden group">
@@ -81,7 +81,7 @@ export default function About() {
             </section>
 
             {/* Why Choose Us */}
-            <section className="py-24 bg-white border-y border-gray-100">
+            <section className="py-24 bg-white border-y border-[#e6dfcc]">
                 <div className="container mx-auto px-6 lg:px-20">
                     <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-20">
                         <span className="text-black text-xs font-bold uppercase tracking-[0.2em]">{t('about.why_badge')}</span>

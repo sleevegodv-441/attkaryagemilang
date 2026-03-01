@@ -33,7 +33,7 @@ export default function AdminMedia() {
         <div className="space-y-6">
             <div className="flex items-center justify-between">
                 <div><h1 className="text-2xl font-bold text-gray-900">Media Library</h1><p className="text-gray-400 text-sm mt-1">Upload dan kelola gambar</p></div>
-                <label className="bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2 cursor-pointer transition-colors">
+                <label className="bg-primary text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-primary-hover flex items-center gap-2 cursor-pointer transition-colors">
                     {uploading ? <span className="material-symbols-outlined text-sm animate-spin">progress_activity</span> : <span className="material-symbols-outlined text-sm">cloud_upload</span>}
                     Upload Image
                     <input type="file" accept="image/*" onChange={upload} className="hidden" />

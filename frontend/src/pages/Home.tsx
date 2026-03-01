@@ -50,13 +50,13 @@ export default function Home() {
                     <div className="h-full w-full bg-cover bg-center bg-no-repeat grayscale" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBcqVZcCf_ov2WCNdXj1ai3icqJBq5_9qcviyU5909Lx8Z_YAW50FwI7EagncphOn1r2pLDiYNPxLYB6fYkX4V--0kyK1fkzFIXu_VkRt2c77pmOHTg7FgoQyT3JTW6DliCLlRAQkRBNaQe2yYFcu9emxpm4f-EYurbCqxU0QrR_vkbq3BJS_wR7XvOzs7yrzEFKaqNsmiKNTU2aekC63HRx8E0eCiGsdeu4BqmIHiUEh8lnrRshna-XHf6zl3ioLWNLx6DXvuTeTtx")' }}></div>
                 </div>
                 <FadeIn direction="up" delay={0.2} className="relative z-20 container mx-auto px-4 lg:px-20 flex flex-col items-center text-center gap-10 max-w-5xl mt-10">
-                    <div className="inline-flex items-center justify-center px-4 py-1.5 border border-slate-200 bg-white mb-2">
+                    <div className="inline-flex items-center justify-center px-4 py-1.5 border border-[#d6cfbc] bg-white mb-2">
                         <span className="text-xs font-semibold text-slate-800 tracking-widest uppercase font-[Noto_Sans]">{t('home.hero.badge')}</span>
                     </div>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-[Newsreader] font-medium text-slate-900 leading-[1.1] tracking-tight">
                         {t('home.hero.title1')} <br className="hidden md:block" /> <span className="italic text-slate-600">{t('home.hero.title2')}</span>
                     </h1>
-                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-slate-600 text-sm md:text-base font-[Noto_Sans] font-light tracking-wide border-t border-b border-gray-100 py-4 w-full md:w-auto">
+                    <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-slate-600 text-sm md:text-base font-[Noto_Sans] font-light tracking-wide border-t border-b border-[#e6dfcc] py-4 w-full md:w-auto">
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-slate-800 text-sm">verified</span> {t('home.hero.exp')}</span>
                         <span className="hidden md:inline text-slate-300">|</span>
                         <span className="flex items-center gap-2"><span className="material-symbols-outlined text-slate-800 text-sm">verified</span> {t('home.hero.warranty')}</span>
@@ -68,7 +68,7 @@ export default function Home() {
                             {t('home.hero.cta1')}
                             <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
                         </Link>
-                        <Link to="/services" className="h-14 px-10 border border-black hover:bg-slate-50 text-slate-900 font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center bg-transparent">
+                        <Link to="/services" className="h-14 px-10 border border-black hover:bg-accent text-slate-900 font-[Noto_Sans] font-medium text-base transition-all flex items-center justify-center bg-transparent">
                             {t('home.hero.cta2')}
                         </Link>
                     </div>
@@ -77,9 +77,9 @@ export default function Home() {
                     <span className="material-symbols-outlined">keyboard_arrow_down</span>
                 </div>
             </section>
-            <section className="py-24 bg-white relative border-t border-gray-100">
+            <section className="py-24 bg-white relative border-t border-[#e6dfcc]">
                 <div className="container mx-auto px-6 lg:px-20">
-                    <FadeIn direction="up" className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20 border-b border-gray-100 pb-10">
+                    <FadeIn direction="up" className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20 border-b border-[#e6dfcc] pb-10">
                         <div className="max-w-2xl">
                             <h2 className="text-black text-xs font-bold uppercase tracking-[0.2em] mb-4 font-[Noto_Sans]">{t('home.services.badge')}</h2>
                             <h3 className="text-4xl md:text-5xl font-[Newsreader] text-slate-900 leading-tight">{t('home.services.title1')} <br /><span className="text-slate-500 italic">{t('home.services.title2')}</span></h3>
@@ -88,8 +88,8 @@ export default function Home() {
                             {t('home.services.desc')}
                         </p>
                     </FadeIn>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-100 border border-gray-100">
-                        <FadeIn delay={0.1} className="group relative p-10 flex flex-col gap-6 hover:bg-slate-50 transition-colors duration-500">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-gray-100 border border-[#e6dfcc]">
+                        <FadeIn delay={0.1} className="group relative p-10 flex flex-col gap-6 hover:bg-accent transition-colors duration-500">
                             <div className="size-12 flex items-center justify-start text-black">
                                 <span className="material-symbols-outlined text-4xl font-light">foundation</span>
                             </div>
@@ -101,7 +101,7 @@ export default function Home() {
                                 {t('home.services.more')} <span className="material-symbols-outlined text-base ml-2 group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                             </div>
                         </FadeIn>
-                        <FadeIn delay={0.2} className="group relative p-10 flex flex-col gap-6 hover:bg-slate-50 transition-colors duration-500">
+                        <FadeIn delay={0.2} className="group relative p-10 flex flex-col gap-6 hover:bg-accent transition-colors duration-500">
                             <div className="size-12 flex items-center justify-start text-black">
                                 <span className="material-symbols-outlined text-4xl font-light">construction</span>
                             </div>
@@ -113,7 +113,7 @@ export default function Home() {
                                 {t('home.services.more')} <span className="material-symbols-outlined text-base ml-2 group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
                             </div>
                         </FadeIn>
-                        <FadeIn delay={0.3} className="group relative p-10 flex flex-col gap-6 hover:bg-slate-50 transition-colors duration-500">
+                        <FadeIn delay={0.3} className="group relative p-10 flex flex-col gap-6 hover:bg-accent transition-colors duration-500">
                             <div className="size-12 flex items-center justify-start text-black">
                                 <span className="material-symbols-outlined text-4xl font-light">chair</span>
                             </div>
@@ -153,7 +153,7 @@ export default function Home() {
             </section>
 
             {/* Partner Logos */}
-            <section className="py-16 bg-white border-y border-gray-100">
+            <section className="py-16 bg-white border-y border-[#e6dfcc]">
                 <div className="container mx-auto px-6 lg:px-20">
                     <FadeIn direction="up" className="text-center mb-12">
                         <span className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('partners.badge')}</span>
@@ -177,7 +177,7 @@ export default function Home() {
             </section>
 
             {/* Process Timeline */}
-            <section className="py-24 bg-slate-50">
+            <section className="py-24 bg-accent">
                 <div className="container mx-auto px-6 lg:px-20">
                     <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-20">
                         <span className="text-black text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('process.badge')}</span>
@@ -194,7 +194,7 @@ export default function Home() {
                             { step: '04', icon: 'key', titleKey: 'process.s4_title', descKey: 'process.s4_desc' },
                         ].map((item, i) => (
                             <FadeIn key={i} delay={i * 0.15} className="flex flex-col items-center text-center relative z-10">
-                                <div className="size-24 rounded-full bg-white border-2 border-gray-200 flex items-center justify-center mb-6 shadow-sm">
+                                <div className="size-24 rounded-full bg-white border-2 border-[#d6cfbc] flex items-center justify-center mb-6 shadow-sm">
                                     <span className="material-symbols-outlined text-3xl text-black font-light">{item.icon}</span>
                                 </div>
                                 <span className="text-xs font-bold text-slate-400 tracking-widest mb-2 font-[Noto_Sans]">{t('process.step')} {item.step}</span>
@@ -206,7 +206,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="py-24 bg-slate-50">
+            <section className="py-24 bg-accent">
                 <div className="container mx-auto px-6 lg:px-20">
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <span className="text-black text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('home.portfolio.badge')}</span>
@@ -222,7 +222,7 @@ export default function Home() {
                             </div>
                         </div>
                     ) : homeProjects.length === 0 ? (
-                        <div className="text-center py-16 border-2 border-dashed border-gray-200">
+                        <div className="text-center py-16 border-2 border-dashed border-[#d6cfbc]">
                             <span className="material-symbols-outlined text-5xl text-slate-300">apartment</span>
                             <p className="text-slate-400 mt-4 font-[Noto_Sans]">Belum ada proyek</p>
                         </div>
@@ -233,7 +233,7 @@ export default function Home() {
                                 <div className="aspect-[4/3] lg:aspect-auto lg:h-[600px] overflow-hidden">
                                     <div className="h-full w-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 filter grayscale group-hover:grayscale-0" style={{ backgroundImage: `url("${homeProjects[0].image_url}")` }}></div>
                                 </div>
-                                <div className="p-8 bg-white border border-gray-100 border-t-0">
+                                <div className="p-8 bg-white border border-[#e6dfcc] border-t-0">
                                     <div className="flex flex-col gap-2">
                                         <span className="text-slate-400 text-xs font-bold uppercase tracking-wider font-[Noto_Sans]">{homeProjects[0].location}</span>
                                         <h3 className="text-2xl font-[Newsreader] font-bold text-slate-900">{homeProjects[0].title}</h3>
@@ -250,7 +250,7 @@ export default function Home() {
                                         <div className="h-[280px] overflow-hidden">
                                             <div className="h-full w-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105 filter grayscale group-hover:grayscale-0" style={{ backgroundImage: `url("${p.image_url}")` }}></div>
                                         </div>
-                                        <div className="p-6 bg-white border border-gray-100 border-t-0">
+                                        <div className="p-6 bg-white border border-[#e6dfcc] border-t-0">
                                             <span className="text-slate-400 text-xs font-bold uppercase tracking-wider font-[Noto_Sans]">{p.location}</span>
                                             <h3 className="text-xl font-[Newsreader] font-bold text-slate-900 mt-2">{p.title}</h3>
                                         </div>
@@ -268,7 +268,7 @@ export default function Home() {
             </section>
 
             {/* Testimonials Section */}
-            <section className="py-24 bg-white border-t border-gray-100">
+            <section className="py-24 bg-white border-t border-[#e6dfcc]">
                 <div className="container mx-auto px-6 lg:px-20">
                     <FadeIn direction="up" className="text-center max-w-3xl mx-auto mb-20">
                         <span className="text-black text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('testimonials.badge')}</span>
@@ -284,13 +284,13 @@ export default function Home() {
                                 </div>
                             ))
                         ) : testimonials.length === 0 ? (
-                            <div className="col-span-3 text-center py-12 border-2 border-dashed border-gray-200">
+                            <div className="col-span-3 text-center py-12 border-2 border-dashed border-[#d6cfbc]">
                                 <span className="material-symbols-outlined text-4xl text-slate-300">chat</span>
                                 <p className="text-slate-400 mt-2 font-[Noto_Sans]">Belum ada testimoni</p>
                             </div>
                         ) : (
                             testimonials.slice(0, 3).map((item, i) => (
-                                <FadeIn key={item.id} delay={(i + 1) * 0.15} className="bg-slate-50 p-8 md:p-10 flex flex-col gap-6 border border-gray-100 hover:shadow-lg transition-shadow duration-500">
+                                <FadeIn key={item.id} delay={(i + 1) * 0.15} className="bg-accent p-8 md:p-10 flex flex-col gap-6 border border-[#e6dfcc] hover:shadow-lg transition-shadow duration-500">
                                     <div className="flex gap-1 text-yellow-400">
                                         {[...Array(item.rating)].map((_, j) => (
                                             <span key={j} className="material-symbols-outlined text-lg">star</span>
@@ -299,7 +299,7 @@ export default function Home() {
                                     <p className="text-slate-600 text-sm leading-relaxed font-[Noto_Sans] font-light italic flex-grow">
                                         "{item.quote}"
                                     </p>
-                                    <div className="border-t border-gray-200 pt-6 flex items-center gap-4">
+                                    <div className="border-t border-[#d6cfbc] pt-6 flex items-center gap-4">
                                         <div className="size-12 rounded-full bg-slate-200 flex items-center justify-center">
                                             <span className="material-symbols-outlined text-slate-500">person</span>
                                         </div>
@@ -314,16 +314,16 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="py-24 relative overflow-hidden bg-white border-t border-gray-100">
+            <section className="py-24 relative overflow-hidden bg-white border-t border-[#e6dfcc]">
                 <div className="container mx-auto px-6 relative z-10">
-                    <FadeIn direction="up" className="max-w-4xl mx-auto border border-gray-200 bg-white p-10 md:p-20 text-center shadow-sm relative overflow-hidden">
+                    <FadeIn direction="up" className="max-w-4xl mx-auto border border-[#d6cfbc] bg-white p-10 md:p-20 text-center shadow-sm relative overflow-hidden">
                         <h2 className="text-3xl md:text-5xl font-[Newsreader] font-medium text-slate-900 mb-6">{t('home.cta.title')}</h2>
                         <p className="text-slate-500 text-lg mb-10 max-w-xl mx-auto font-[Noto_Sans] font-light">{t('home.cta.desc')}</p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link to="/contact" className="bg-black text-white hover:bg-slate-800 px-10 py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
                                 {t('home.cta.btn1')}
                             </Link>
-                            <Link to="/contact" className="bg-transparent border border-black text-black hover:bg-gray-50 px-10 py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
+                            <Link to="/contact" className="bg-transparent border border-black text-black hover:bg-accent px-10 py-4 font-medium font-[Noto_Sans] transition-colors min-w-[200px]">
                                 {t('home.cta.btn2')}
                             </Link>
                         </div>

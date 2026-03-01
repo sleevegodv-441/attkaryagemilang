@@ -86,7 +86,7 @@ export default function Blog() {
                                 placeholder="Search articles..."
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
-                                className="w-full sm:w-64 pl-10 pr-4 py-2 border border-slate-200 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black font-[Noto_Sans] bg-slate-50 transition-all"
+                                className="w-full sm:w-64 pl-10 pr-4 py-2 border border-[#d6cfbc] rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-black focus:border-black font-[Noto_Sans] bg-accent transition-all"
                             />
                             <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-[20px]">search</span>
                             {searchTerm && (
@@ -108,12 +108,12 @@ export default function Blog() {
                                 </div>
                             ))
                         ) : paginatedArticles.length === 0 ? (
-                            <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-16 bg-slate-50/50 rounded-2xl border border-slate-100 border-dashed">
+                            <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-16 bg-accent/50 rounded-2xl border border-[#e6dfcc] border-dashed">
                                 <span className="material-symbols-outlined text-4xl text-slate-300 mb-3 block">search_off</span>
                                 <h3 className="text-lg font-bold text-slate-700 font-[Newsreader] mb-1">Tidak ada artikel ditemukan</h3>
                                 <p className="text-slate-500 font-[Noto_Sans] text-sm">Coba gunakan kata kunci pencarian yang lain.</p>
                                 {searchTerm && (
-                                    <button onClick={() => setSearchTerm('')} className="mt-4 text-blue-600 font-medium text-sm hover:underline">
+                                    <button onClick={() => setSearchTerm('')} className="mt-4 text-primary font-medium text-sm hover:underline">
                                         Hapus Pencarian
                                     </button>
                                 )}
@@ -126,7 +126,7 @@ export default function Blog() {
                                             <div className="w-full h-full bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105" style={{ backgroundImage: `url('${post.image_url}')` }}></div>
                                         </div>
                                         <div className="flex flex-col gap-3">
-                                            <div className="flex items-center justify-between border-b border-gray-100 pb-2 mb-1">
+                                            <div className="flex items-center justify-between border-b border-[#e6dfcc] pb-2 mb-1">
                                                 <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.15em]">{post.category}</span>
                                                 <span className="text-[10px] font-medium text-gray-400 font-mono">{formatDate(post.published_at)}</span>
                                             </div>
@@ -145,11 +145,11 @@ export default function Blog() {
 
                     {/* Pagination Controls */}
                     {!loading && totalPages > 1 && (
-                        <div className="flex justify-center items-center gap-2 mt-16 pt-8 border-t border-slate-100">
+                        <div className="flex justify-center items-center gap-2 mt-16 pt-8 border-t border-[#e6dfcc]">
                             <button
                                 onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                                 disabled={currentPage === 1}
-                                className="size-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-black hover:border-black disabled:opacity-50 disabled:pointer-events-none transition-all"
+                                className="size-10 flex items-center justify-center rounded-full border border-[#d6cfbc] text-slate-500 hover:bg-accent hover:text-black hover:border-black disabled:opacity-50 disabled:pointer-events-none transition-all"
                             >
                                 <span className="material-symbols-outlined text-[20px]">chevron_left</span>
                             </button>
@@ -161,7 +161,7 @@ export default function Blog() {
                                         onClick={() => setCurrentPage(i + 1)}
                                         className={`size-10 flex items-center justify-center rounded-full text-sm font-medium transition-all ${currentPage === i + 1
                                                 ? 'bg-black text-white'
-                                                : 'text-slate-500 hover:bg-slate-50 hover:text-black'
+                                                : 'text-slate-500 hover:bg-accent hover:text-black'
                                             }`}
                                     >
                                         {i + 1}
@@ -172,7 +172,7 @@ export default function Blog() {
                             <button
                                 onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                                 disabled={currentPage === totalPages}
-                                className="size-10 flex items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:bg-slate-50 hover:text-black hover:border-black disabled:opacity-50 disabled:pointer-events-none transition-all"
+                                className="size-10 flex items-center justify-center rounded-full border border-[#d6cfbc] text-slate-500 hover:bg-accent hover:text-black hover:border-black disabled:opacity-50 disabled:pointer-events-none transition-all"
                             >
                                 <span className="material-symbols-outlined text-[20px]">chevron_right</span>
                             </button>

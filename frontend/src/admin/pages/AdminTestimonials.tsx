@@ -18,36 +18,36 @@ export default function AdminTestimonials() {
 
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
-            <div className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between flex-shrink-0">
+            <div className="bg-white border-b border-[#e6dfcc] px-6 py-4 flex items-center justify-between flex-shrink-0">
                 <div className="flex items-center gap-3">
                     <span className="material-symbols-outlined text-gray-400">reviews</span>
                     <div><h1 className="text-lg font-bold text-gray-900">Testimonials</h1><p className="text-xs text-gray-400">Kelola testimoni klien</p></div>
                 </div>
-                <button onClick={startNew} className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 flex items-center gap-2"><span className="material-symbols-outlined text-sm">add</span> Tambah</button>
+                <button onClick={startNew} className="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-primary-hover flex items-center gap-2"><span className="material-symbols-outlined text-sm">add</span> Tambah</button>
             </div>
 
             <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
-                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-gray-100">
+                <div className="w-full lg:w-1/2 h-1/2 lg:h-full overflow-y-auto bg-accent/50 border-b lg:border-b-0 lg:border-r border-[#e6dfcc]">
                     {editing && (
                         <div className="m-4 bg-white rounded-xl p-5 space-y-4 shadow-sm">
-                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-blue-500 text-base">reviews</span> {editing === 'new' ? 'New Testimonial' : 'Edit Testimonial'}</h3>
+                            <h3 className="text-sm font-bold text-gray-900 flex items-center gap-2"><span className="material-symbols-outlined text-primary text-base">reviews</span> {editing === 'new' ? 'New Testimonial' : 'Edit Testimonial'}</h3>
                             <div className="grid grid-cols-2 gap-3">
-                                <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Nama" className="px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
-                                <input value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} placeholder="Role (e.g. Pemilik Rumah, BSD)" className="px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                                <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Nama" className="px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
+                                <input value={form.role} onChange={e => setForm({ ...form, role: e.target.value })} placeholder="Role (e.g. Pemilik Rumah, BSD)" className="px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                             </div>
-                            <textarea value={form.quote} onChange={e => setForm({ ...form, quote: e.target.value })} placeholder="Testimoni" rows={3} className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+                            <textarea value={form.quote} onChange={e => setForm({ ...form, quote: e.target.value })} placeholder="Testimoni" rows={3} className="w-full px-3.5 py-2.5 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary" />
                             <div className="flex gap-4 items-center">
                                 <div className="flex items-center gap-2">
                                     <label className="text-xs text-gray-500">Rating:</label>
-                                    <select value={form.rating} onChange={e => setForm({ ...form, rating: parseInt(e.target.value) })} className="px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
+                                    <select value={form.rating} onChange={e => setForm({ ...form, rating: parseInt(e.target.value) })} className="px-3 py-2 border border-[#d6cfbc] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary bg-white">
                                         {[5, 4, 3, 2, 1].map(r => <option key={r} value={r}>{r} ⭐</option>)}
                                     </select>
                                 </div>
-                                <label className="flex items-center gap-2.5 ml-auto cursor-pointer"><input type="checkbox" checked={form.is_active} onChange={e => setForm({ ...form, is_active: e.target.checked })} className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500" /> <span className="text-sm text-gray-700">Active</span></label>
+                                <label className="flex items-center gap-2.5 ml-auto cursor-pointer"><input type="checkbox" checked={form.is_active} onChange={e => setForm({ ...form, is_active: e.target.checked })} className="w-4 h-4 rounded text-primary focus:ring-primary" /> <span className="text-sm text-gray-700">Active</span></label>
                             </div>
                             <div className="flex gap-3">
-                                <button onClick={save} className="bg-blue-600 text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-blue-700">Save</button>
-                                <button onClick={() => setEditing(null)} className="text-gray-500 px-5 py-2 rounded-lg text-sm border border-gray-200 hover:bg-gray-50">Cancel</button>
+                                <button onClick={save} className="bg-primary text-white px-5 py-2 rounded-lg text-sm font-medium hover:bg-primary-hover">Save</button>
+                                <button onClick={() => setEditing(null)} className="text-gray-500 px-5 py-2 rounded-lg text-sm border border-[#d6cfbc] hover:bg-accent">Cancel</button>
                             </div>
                         </div>
                     )}
@@ -57,7 +57,7 @@ export default function AdminTestimonials() {
                         <div className="p-4 space-y-2">
                             {items.map(t => (
                                 <div key={t.id} className="bg-white rounded-xl p-4 flex items-start gap-3 hover:shadow-md transition-shadow">
-                                    <div className="size-9 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-0.5"><span className="material-symbols-outlined text-blue-500 text-base">person</span></div>
+                                    <div className="size-9 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-0.5"><span className="material-symbols-outlined text-primary text-base">person</span></div>
                                     <div className="flex-1 min-w-0">
                                         <div className="flex items-center gap-2">
                                             <h3 className="font-medium text-gray-900 text-sm">{t.name}</h3>
@@ -67,7 +67,7 @@ export default function AdminTestimonials() {
                                         <p className="text-xs text-gray-500 mt-1 italic line-clamp-2">"{t.quote}"</p>
                                         <p className="text-[10px] text-amber-500 mt-0.5">{'⭐'.repeat(t.rating)}</p>
                                     </div>
-                                    <button onClick={() => startEdit(t)} className="text-gray-400 hover:text-blue-600 p-1 rounded-lg hover:bg-blue-50 transition-colors"><span className="material-symbols-outlined text-base">edit</span></button>
+                                    <button onClick={() => startEdit(t)} className="text-gray-400 hover:text-primary p-1 rounded-lg hover:bg-accent transition-colors"><span className="material-symbols-outlined text-base">edit</span></button>
                                     <button onClick={() => remove(t.id)} className="text-gray-400 hover:text-red-500 p-1 rounded-lg hover:bg-red-50 transition-colors"><span className="material-symbols-outlined text-base">delete</span></button>
                                 </div>
                             ))}
@@ -76,7 +76,7 @@ export default function AdminTestimonials() {
                 </div>
 
                 <div className="w-full lg:w-1/2 h-1/2 lg:h-full bg-gray-100 flex flex-col">
-                    <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center justify-between flex-shrink-0">
+                    <div className="px-4 py-3 bg-white border-b border-[#e6dfcc] flex items-center justify-between flex-shrink-0">
                         <div className="flex items-center gap-2"><span className="material-symbols-outlined text-gray-400 text-sm">desktop_windows</span><span className="text-xs font-medium text-gray-500">Live Preview — Homepage Testimonials</span></div>
                         <button onClick={() => setPreviewKey(k => k + 1)} className="text-xs text-gray-500 hover:text-gray-700 flex items-center gap-1"><span className="material-symbols-outlined text-sm">refresh</span> Refresh</button>
                     </div>

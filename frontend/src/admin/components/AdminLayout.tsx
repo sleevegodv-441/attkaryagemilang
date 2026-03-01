@@ -41,12 +41,12 @@ export default function AdminLayout() {
     };
 
     return (
-        <div className="min-h-screen flex bg-gray-50/50 font-[Inter,system-ui,sans-serif]">
+        <div className="min-h-screen flex bg-accent/50 font-[Inter,system-ui,sans-serif]">
             {/* Sidebar — light, clean, blue accent */}
-            <aside className="w-60 bg-white border-r border-gray-200 flex flex-col fixed h-full z-30">
-                <div className="px-5 py-5 border-b border-gray-100">
+            <aside className="w-60 bg-white border-r border-[#d6cfbc] flex flex-col fixed h-full z-30">
+                <div className="px-5 py-5 border-b border-[#e6dfcc]">
                     <Link to="/admin" className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                             <span className="material-symbols-outlined text-white text-base">apartment</span>
                         </div>
                         <div>
@@ -63,12 +63,12 @@ export default function AdminLayout() {
                             key={item.to}
                             to={item.to}
                             className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all mb-0.5 justify-between ${isActive(item.to, item.exact)
-                                ? 'bg-blue-50 text-blue-700'
-                                : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                                ? 'bg-accent text-secondary'
+                                : 'text-gray-500 hover:text-gray-900 hover:bg-accent'
                                 }`}
                         >
                             <div className="flex items-center gap-3">
-                                <span className={`material-symbols-outlined text-lg ${isActive(item.to, item.exact) ? 'text-blue-600' : ''}`}>{item.icon}</span>
+                                <span className={`material-symbols-outlined text-lg ${isActive(item.to, item.exact) ? 'text-primary' : ''}`}>{item.icon}</span>
                                 {item.label}
                             </div>
                             {item.label === 'Inbox' && unreadCount > 0 && (
@@ -80,8 +80,8 @@ export default function AdminLayout() {
                     ))}
                 </nav>
 
-                <div className="p-3 border-t border-gray-100 space-y-1">
-                    <Link to="/" target="_blank" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-xs px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                <div className="p-3 border-t border-[#e6dfcc] space-y-1">
+                    <Link to="/" target="_blank" className="flex items-center gap-2 text-gray-400 hover:text-gray-700 text-xs px-3 py-2 rounded-lg hover:bg-accent transition-colors">
                         <span className="material-symbols-outlined text-sm">open_in_new</span>
                         View Website
                     </Link>

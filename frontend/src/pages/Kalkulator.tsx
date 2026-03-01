@@ -47,13 +47,13 @@ export default function Calculator() {
     const wamessage = `Halo Tim ATT Karya Gemilang, saya ingin berkonsultasi mengenai rencana proyek saya:\n\n- Layanan: ${service.replace('_', ' ')}\n- Spesifikasi: ${spec}\n- Luas Perkiraan: ${area || 0} m2\n- Estimasi Biaya: ${formatRupiah(estimate)}\n\nMohon info lebih lanjut untuk proses survey lokasinya. Terima kasih.`;
 
     return (
-        <main className="flex-grow bg-slate-50 font-[Noto_Sans] py-20 lg:py-32">
+        <main className="flex-grow bg-accent font-[Noto_Sans] py-20 lg:py-32">
             <SEO titleKey="nav.estimator" descriptionKey="calc.desc" />
             <div className="container mx-auto px-4 lg:px-20 max-w-6xl">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
                     {/* Left Column: Form */}
-                    <FadeIn direction="left" className="w-full lg:w-3/5 bg-white p-8 md:p-12 shadow-sm border border-slate-100 rounded-3xl">
+                    <FadeIn direction="left" className="w-full lg:w-3/5 bg-white p-8 md:p-12 shadow-sm border border-[#e6dfcc] rounded-3xl">
                         <h1 className="text-3xl lg:text-4xl font-[Newsreader] font-bold text-slate-900 mb-2">{t('calc.title')}</h1>
                         <p className="text-slate-500 mb-10 font-light text-sm md:text-base">{t('calc.desc')}</p>
 
@@ -71,7 +71,7 @@ export default function Calculator() {
                                             key={item.id}
                                             type="button"
                                             onClick={() => setService(item.id)}
-                                            className={`flex flex-col items-center justify-center p-6 border rounded-xl gap-3 transition-all ${service === item.id ? 'border-blue-600 bg-blue-50/50 text-blue-700 shadow-sm ring-1 ring-blue-600' : 'border-slate-200 hover:border-slate-300 bg-white text-slate-600'}`}
+                                            className={`flex flex-col items-center justify-center p-6 border rounded-xl gap-3 transition-all ${service === item.id ? 'border-primary bg-accent/50 text-secondary shadow-sm ring-1 ring-blue-600' : 'border-[#d6cfbc] hover:border-slate-300 bg-white text-slate-600'}`}
                                         >
                                             <span className="material-symbols-outlined text-3xl font-light">{item.icon}</span>
                                             <span className="font-semibold text-sm text-center">{item.label}</span>
@@ -93,7 +93,7 @@ export default function Calculator() {
                                             key={item.id}
                                             type="button"
                                             onClick={() => setSpec(item.id)}
-                                            className={`flex flex-col items-start p-5 border rounded-xl gap-2 transition-all text-left ${spec === item.id ? 'border-blue-600 bg-blue-50/50 text-blue-700 shadow-sm ring-1 ring-blue-600' : 'border-slate-200 hover:border-slate-300 bg-white text-slate-600'}`}
+                                            className={`flex flex-col items-start p-5 border rounded-xl gap-2 transition-all text-left ${spec === item.id ? 'border-primary bg-accent/50 text-secondary shadow-sm ring-1 ring-blue-600' : 'border-[#d6cfbc] hover:border-slate-300 bg-white text-slate-600'}`}
                                         >
                                             <span className="font-bold">{item.title}</span>
                                             <span className="text-xs opacity-80 leading-relaxed">{item.desc}</span>
@@ -112,7 +112,7 @@ export default function Calculator() {
                                         min="0"
                                         value={area}
                                         onChange={(e) => setArea(e.target.value === '' ? '' : Number(e.target.value))}
-                                        className="w-full h-14 pl-5 pr-12 text-xl font-medium border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-blue-600 outline-none transition-all shadow-sm"
+                                        className="w-full h-14 pl-5 pr-12 text-xl font-medium border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-600 focus:border-primary outline-none transition-all shadow-sm"
                                         placeholder={t('calc.ph_area')}
                                     />
                                     <div className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">
@@ -126,7 +126,7 @@ export default function Calculator() {
                     {/* Right Column: Result Panel */}
                     <FadeIn direction="right" delay={0.2} className="w-full lg:w-2/5">
                         <div className="bg-slate-900 rounded-3xl p-8 md:p-10 text-white shadow-2xl sticky top-32 flex flex-col h-full">
-                            <span className="text-blue-400 font-bold tracking-widest text-xs uppercase mb-6 flex items-center gap-2">
+                            <span className="text-primary font-bold tracking-widest text-xs uppercase mb-6 flex items-center gap-2">
                                 <span className="material-symbols-outlined text-sm">calculate</span>
                                 {t('calc.res_title')}
                             </span>
@@ -146,7 +146,7 @@ export default function Calculator() {
                                     href={`https://wa.me/6287772229006?text=${encodeURIComponent(wamessage)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`flex h-14 items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all gap-2 w-full ${(area && estimate > 0) ? 'opacity-100 cursor-pointer shadow-lg shadow-blue-500/30 hover:scale-[1.02]' : 'opacity-50 pointer-events-none'}`}
+                                    className={`flex h-14 items-center justify-center bg-primary hover:bg-accent0 text-white font-bold rounded-xl transition-all gap-2 w-full ${(area && estimate > 0) ? 'opacity-100 cursor-pointer shadow-lg shadow-blue-500/30 hover:scale-[1.02]' : 'opacity-50 pointer-events-none'}`}
                                 >
                                     <span className="material-symbols-outlined text-xl">forum</span>
                                     {t('calc.btn')}

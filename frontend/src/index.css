@@ -1,11 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #1152d4;
-    --color-secondary: #333333;
-    --color-accent: #f5f5f5;
+    /* GREEN BUILDING THEME */
+    /* Primary: Forest Green - used for buttons, primary actions, and highlights */
+    --color-primary: #166534;
+    --color-primary-hover: #14532d;
+
+    /* Secondary: Earth Brown - used for accents, badges, and secondary buttons */
+    --color-secondary: #9A3412;
+    --color-secondary-hover: #7c2d12;
+
+    /* Accent / Neutral: Sand - used for soft backgrounds replacing gray-50 or blue-50 */
+    --color-accent: #FDF6E3;
+    --color-accent-hover: #f3ead3;
+
     --color-background-light: #ffffff;
-    --color-background-dark: #101622;
+    --color-background-dark: #1e293b;
 
     --font-display: "Newsreader", serif;
     --font-sans: "Noto Sans", sans-serif;
