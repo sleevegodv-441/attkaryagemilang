@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,6 +11,7 @@ import BlogDetail from './pages/BlogDetail';
 import Kalkulator from './pages/Kalkulator';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
+import { loadContentOverrides } from './lib/contentBridge';
 
 // Admin
 import AdminGuard from './admin/components/AdminGuard';
@@ -29,6 +31,9 @@ import AdminMedia from './admin/pages/AdminMedia';
 import AdminMessages from './admin/pages/AdminMessages';
 
 function App() {
+    useEffect(() => {
+        loadContentOverrides();
+    }, []);
     return (
         <BrowserRouter>
             <Routes>

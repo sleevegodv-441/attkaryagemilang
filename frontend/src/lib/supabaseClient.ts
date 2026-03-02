@@ -77,6 +77,7 @@ export interface PageContent {
     section: string;
     key: string;
     value: string;
+    value_en: string;
     updated_at: string;
 }
 

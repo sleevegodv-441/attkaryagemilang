@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase, type PageContent } from '../../lib/supabaseClient';
+import { translateToEnglish } from '../../lib/translate';
 
 type FieldType = 'text' | 'textarea' | 'image';
 interface Field { key: string; label: string; type: FieldType; placeholder: string }
@@ -305,6 +306,7 @@ export default function AdminContent() {
     const [values, setValues] = useState<Record<string, string>>({});
     const [saving, setSaving] = useState<string | null>(null);
     const [saved, setSaved] = useState<string | null>(null);
+    const [savingAll, setSavingAll] = useState(false);
     const [previewKey, setPreviewKey] = useState(0);
     const pageConfig = PAGE_MAP[activePage];
 
@@ -325,20 +327,38 @@ export default function AdminContent() {
         if (!error) { const { data } = supabase.storage.from('images').getPublicUrl(path); setValues(p => ({ ...p, [ck]: data.publicUrl })); }
     };
 
-    const saveSection = async (sectionId: string, fields: { key: string }[]) => {
+    const saveSection = async (sectionId: string, fields: { key: string; type?: string }[], skipRefresh = false) => {
         setSaving(sectionId);
         for (const f of fields) {
             const ck = `${sectionId}__${f.key}`;
             const val = values[ck] || '';
+            // Auto-translate to English (skip images)
+            const valEn = (f as Field).type === 'image' ? val : await translateToEnglish(val);
             const ex = contents.find(c => c.section === sectionId && c.key === f.key);
-            if (ex) { await supabase.from('page_content').update({ value: val }).eq('id', ex.id); }
-            else { await supabase.from('page_content').insert({ page: activePage, section: sectionId, key: f.key, value: val }); }
+            if (ex) {
+                await supabase.from('page_content').update({ value: val, value_en: valEn }).eq('id', ex.id);
+            } else {
+                await supabase.from('page_content').insert({ page: activePage, section: sectionId, key: f.key, value: val, value_en: valEn });
+            }
         }
-        setSaving(null); setSaved(sectionId); setPreviewKey(k => k + 1);
-        setTimeout(() => setSaved(null), 2000); fetchContent();
+        setSaving(null);
+        if (!skipRefresh) {
+            setSaved(sectionId);
+            setPreviewKey(k => k + 1);
+            setTimeout(() => setSaved(null), 2000);
+            await fetchContent();
+        }
     };
 
-    const saveAll = async () => { for (const s of pageConfig.sections) await saveSection(s.id, s.fields); };
+    const saveAll = async () => {
+        setSavingAll(true);
+        for (const s of pageConfig.sections) await saveSection(s.id, s.fields, true);
+        setSavingAll(false);
+        setPreviewKey(k => k + 1);
+        setSaved('all');
+        setTimeout(() => setSaved(null), 2000);
+        await fetchContent();
+    };
 
     return (
         <div className="-m-8 h-[calc(100vh)] flex flex-col">
@@ -359,8 +379,14 @@ export default function AdminContent() {
                     <a href={pageConfig.previewUrl} target="_blank" className="flex items-center gap-2 text-sm text-gray-500 border border-[#d6cfbc] rounded-lg px-4 py-2 hover:bg-accent">
                         <span className="material-symbols-outlined text-sm">open_in_new</span> Preview
                     </a>
-                    <button onClick={saveAll} className="flex items-center gap-2 bg-primary text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-primary-hover">
-                        <span className="material-symbols-outlined text-sm">publish</span> Publish Changes
+                    <button onClick={saveAll} disabled={savingAll} className="flex items-center gap-2 bg-primary text-white text-sm font-medium rounded-lg px-5 py-2 hover:bg-primary-hover disabled:opacity-60">
+                        {savingAll ? (
+                            <><span className="material-symbols-outlined text-sm animate-spin">progress_activity</span> Saving...</>
+                        ) : saved === 'all' ? (
+                            <><span className="material-symbols-outlined text-sm">check_circle</span> Published!</>
+                        ) : (
+                            <><span className="material-symbols-outlined text-sm">publish</span> Publish Changes</>
+                        )}
                     </button>
                 </div>
             </div>
@@ -393,7 +419,7 @@ export default function AdminContent() {
                                             <p className="text-[11px] text-gray-400 mt-0.5">{section.description}</p>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            {saved === section.id && <span className="text-green-600 text-xs font-medium flex items-center gap-1"><span className="material-symbols-outlined text-xs">check_circle</span> Saved</span>}
+                                            {(saved === section.id || saved === 'all') && <span className="text-green-600 text-xs font-medium flex items-center gap-1"><span className="material-symbols-outlined text-xs">check_circle</span> Saved</span>}
                                             <button onClick={() => saveSection(section.id, section.fields)} disabled={saving === section.id}
                                                 className="bg-accent text-primary px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-[#e6dfcc] transition-colors disabled:opacity-60 flex items-center gap-1">
                                                 {saving === section.id ? <span className="material-symbols-outlined text-xs animate-spin">progress_activity</span> : <span className="material-symbols-outlined text-xs">save</span>} Save

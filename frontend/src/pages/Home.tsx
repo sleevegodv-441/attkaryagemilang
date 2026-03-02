@@ -136,8 +136,12 @@ export default function Home() {
                         <span className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('stats.badge')}</span>
                         <h2 className="text-3xl md:text-4xl font-[Newsreader] font-medium text-white mt-4">{t('stats.title')}</h2>
                     </FadeIn>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-                        {[{ end: 100, label: t('stats.projects'), suffix: '+' }, { end: 50, label: t('stats.clients'), suffix: '+' }, { end: 10, label: t('stats.years'), suffix: '+' }, { end: 25, label: t('stats.team'), suffix: '+' }].map((item, i) => {
+                    <div className="grid grid-cols-3 gap-8 md:gap-12">
+                        {[
+                            { end: projects.length || 1, label: t('stats.projects'), suffix: '+' },
+                            { end: projects.length || 1, label: t('stats.clients'), suffix: '+' },
+                            { end: parseInt(t('home.hero.exp').replace(/\D/g, '')) || 10, label: t('stats.years'), suffix: '+' },
+                        ].map((item, i) => {
                             const { count, ref } = useCountUp(item.end);
                             return (
                                 <FadeIn key={i} delay={i * 0.1} className="text-center">
@@ -148,30 +152,6 @@ export default function Home() {
                                 </FadeIn>
                             );
                         })}
-                    </div>
-                </div>
-            </section>
-
-            {/* Partner Logos */}
-            <section className="py-16 bg-white border-y border-[#e6dfcc]">
-                <div className="container mx-auto px-6 lg:px-20">
-                    <FadeIn direction="up" className="text-center mb-12">
-                        <span className="text-slate-400 text-xs font-bold uppercase tracking-[0.2em] font-[Noto_Sans]">{t('partners.badge')}</span>
-                    </FadeIn>
-                    <div className="grid grid-cols-3 md:grid-cols-6 gap-8 items-center justify-items-center opacity-40 grayscale">
-                        {[
-                            { name: 'TOTO', icon: 'plumbing' },
-                            { name: 'ROMAN', icon: 'grid_view' },
-                            { name: 'DULUX', icon: 'format_paint' },
-                            { name: 'HOLCIM', icon: 'foundation' },
-                            { name: 'RUCIKA', icon: 'water_drop' },
-                            { name: 'SCHNEIDER', icon: 'electrical_services' },
-                        ].map((brand, i) => (
-                            <FadeIn key={i} delay={i * 0.08} className="flex flex-col items-center gap-2 hover:opacity-100 hover:grayscale-0 transition-all duration-500 cursor-default">
-                                <span className="material-symbols-outlined text-3xl text-slate-600">{brand.icon}</span>
-                                <span className="text-xs font-bold text-slate-600 tracking-widest font-[Noto_Sans]">{brand.name}</span>
-                            </FadeIn>
-                        ))}
                     </div>
                 </div>
             </section>
